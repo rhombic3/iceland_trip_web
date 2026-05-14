@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iceland 11-Day Road Trip · 冰岛十一日旅行攻略</title>
+  <link rel="stylesheet" href="assets/iceland-trip.css" />
+</head>
+<body>
+<main class="app">
+  <aside class="sidebar">
+    <div class="head"><div class="eyebrow"><span class="spark"></span> 7–17 June · Iceland</div><h1>冰岛十一日环岛与高地旅行</h1><p class="sub">每日行程 · Google Maps 实际路线 · 景点图集</p></div>
+    <div class="tabs" id="tabs"></div>
+    <section class="content" id="content"></section>
+  </aside>
+  <section class="mapPanel" id="mapPanel">
+    <div class="mapTop"><div><h2 id="mapTitle">当天景点总览</h2><p id="mapSub">默认显示景点点位；点击行程后切换为 Google Maps 路线</p></div><div class="buttons"><button class="btn light" onclick="loadOverview(currentDay)">景点总览</button><button class="btn" onclick="reloadMap()">重载</button></div></div>
+    <iframe id="mapFrame" title="Google Maps route" src="https://maps.google.com/maps?f=d&amp;saddr=KEF+Airport+Iceland&amp;daddr=Hallgrimskirkja+Reykjavik+Iceland+to%3A+Thingvellir+National+Park+Iceland+to%3A+Br%C3%BAarfoss+Iceland+to%3A+Geysir+Iceland+to%3A+Gullfoss+Iceland+to%3A+Keri%C3%B0+crater+Iceland+to%3A+Husinu%2C+861+Hl%C3%AD%C3%B0arendi%2C+Iceland&amp;dirflg=d&amp;hl=zh-CN&amp;output=embed" loading="eager" allow="fullscreen; geolocation" allowfullscreen></iframe>
+    <div class="sidePanel" id="sidePanel"></div>
+    <div class="drawer hidden" id="drawer"><button class="close" onclick="closeDrawer()">×</button><div id="drawerGallery"></div><div class="drawerBody"><h3 id="drawerTitle"></h3><p id="drawerText"></p><p id="drawerFee"></p><div class="chips" id="drawerLinks"></div></div></div>
+  </section>
+</main>
+<footer class="resourceFooter">
+  <h2>实用网站与补给建议</h2>
+  <p>高地日和长途驾驶前建议每天早晚各查一次道路、天气和安全信息；超市尽量在大城镇提前补齐，东峡湾/西峡湾/高地路段不要假设随时能买到便宜食物。</p>
+  <div class="resourceGrid">
+    <div class="resourceCard"><h3>道路与 F-road 开放</h3>
+      <a href="https://www.road.is/" target="_blank">road.is</a>
+      <a href="https://www.vegagerdin.is/en/the-transportation-system/the-road-system/roads/opening-of-mountain-roads" target="_blank">Opening of mountain roads</a>
+      <a href="https://epiciceland.net/" target="_blank">Epic Iceland</a>
+      <ul><li>手机可装 Færð & Veður APP。</li><li>F-road 难易度、涉水点和开放历史可参考 Epic Iceland；最终以当天 road.is 和现场为准。</li></ul>
+    </div>
+    <div class="resourceCard"><h3>天气与安全</h3>
+      <a href="https://www.vedur.is/" target="_blank">vedur.is</a>
+      <a href="https://safetravel.is/" target="_blank">SafeTravel Iceland</a>
+      <a href="https://en.vedur.is/weather/forecasts/areas/" target="_blank">区域天气预报</a>
+      <ul><li>高地、海岸、瀑布和黑沙滩重点看风速、降雨、能见度和警报。</li><li>Reynisfjara 等海岸不要靠近浪线。</li></ul>
+    </div>
+    <div class="resourceCard"><h3>超市与便宜食物</h3>
+      <a href="https://bonus.is/" target="_blank">Bónus 小猪超市</a>
+      <a href="https://kronan.is/" target="_blank">Krónan</a>
+      <a href="https://netto.is/" target="_blank">Nettó</a>
+      <a href="https://www.costco.is/" target="_blank">Costco Iceland</a>
+      <ul><li>优先买：面包/贝果、火腿奶酪、Skyr、香蕉、即食沙拉、杯面、意面酱、罐头汤、能量棒。</li><li>车上常备：水、热饮、保温杯、湿巾、垃圾袋、备用干粮。</li><li>加油站热狗/汤/三明治可应急，但通常比超市贵。</li></ul>
+    </div>
+  </div>
+</footer>
+<script src="assets/iceland-trip-data.js"></script>
+<script src="assets/iceland-trip-pdfs.js"></script>
+<script src="assets/iceland-trip-app.js"></script>
+</body>
+</html>
