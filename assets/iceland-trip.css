@@ -12,3 +12,48 @@
     .chips button{border:0;background:#121826;color:#fff;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:950;cursor:pointer;box-shadow:0 8px 20px rgba(18,24,38,.14)}
     .chips button:hover{filter:brightness(1.08);transform:translateY(-1px)}
     @media(max-width:860px){#mapFrame{min-height:420px}.mapTop{align-items:flex-start;flex-wrap:wrap}.buttons{width:100%}.btn{flex:1}.drawer{max-height:calc(100% - 58px);border-radius:22px}.gallery,.gallery[data-count="1"],.gallery[data-count="2"],.gallery[data-count="3"],.gallery[data-count="4"]{height:132px}.drawerBody h3{font-size:17px}.drawerBody p{font-size:11.8px}}
+
+    .live-panel {
+    margin: 24px 0;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(12px);
+    }
+
+    .live-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    }
+
+    .weather-grid,
+    .road-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+    }
+
+    .live-card {
+    padding: 14px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .live-card h4 {
+    margin: 0 0 8px;
+    }
+
+    .live-card p {
+    margin: 4px 0;
+    }
+
+    .live-note {
+    font-size: 0.9rem;
+    color: #64748b;
+    }

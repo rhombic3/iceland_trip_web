@@ -20,6 +20,21 @@
     <div class="drawer hidden" id="drawer"><button class="close" onclick="closeDrawer()">×</button><div id="drawerGallery"></div><div class="drawerBody"><h3 id="drawerTitle"></h3><p id="drawerText"></p><p id="drawerFee"></p><div class="chips" id="drawerLinks"></div></div></div>
   </section>
 </main>
+<section class="live-panel">
+  <div class="live-header">
+    <h2>实时天气与高地路况</h2>
+    <span id="liveUpdated">更新中...</span>
+  </div>
+
+  <div id="weatherCards" class="weather-grid"></div>
+
+  <h3>高地路段开放状态</h3>
+  <div id="roadCards" class="road-grid"></div>
+
+  <p class="live-note">
+    注意：本页仅用于快速查看，出发前请以 road.is / trafficinfo.is / vedur.is / SafeTravel 为准。
+  </p>
+</section>
 <footer class="resourceFooter">
   <h2>实用网站与补给建议</h2>
   <p>高地日和长途驾驶前建议每天早晚各查一次道路、天气和安全信息；超市尽量在大城镇提前补齐，东峡湾/西峡湾/高地路段不要假设随时能买到便宜食物。</p>
@@ -50,3 +65,54 @@
 <script src="assets/iceland-trip-app.js"></script>
 </body>
 </html>
+<script>
+async function loadLiveData() {
+  const updatedEl = document.getElementById("liveUpdated");
+  const weatherEl = document.getElementById("weatherCards");
+  const roadEl = document.getElementById("roadCards");
+
+  try {
+    const res = await fetch(`assets/live-data.json?v=${Date.now()}`);
+    const data = await res.json();
+
+    updatedEl.textContent = `Last updated: ${new Date(data.updated_at).toLocaleString()}`;
+
+    weatherEl.innerHTML = data.weather.map(w => {
+      if (w.error) {
+        return `
+          <article class="live-card">
+            <h4>${w.name}</h4>
+            <p>天气获取失败</p>
+          </article>
+        `;
+      }
+
+      const c = w.current || {};
+      return `
+        <article class="live-card">
+          <h4>${w.name}</h4>
+          <p>🌡️ ${c.temperature ?? "-"} °C</p>
+          <p>🌧️ ${c.precipitation ?? "-"} mm</p>
+          <p>💨 ${c.wind_speed ?? "-"} km/h</p>
+          <p>🌬️ Gust ${c.wind_gusts ?? "-"} km/h</p>
+        </article>
+      `;
+    }).join("");
+
+    roadEl.innerHTML = data.roads.map(r => `
+      <article class="live-card road-card">
+        <h4>${r.name}</h4>
+        <p>${r.status}</p>
+        <p>${r.note || ""}</p>
+        <a href="${r.url}" target="_blank" rel="noopener">查看官方路况</a>
+      </article>
+    `).join("");
+
+  } catch (err) {
+    updatedEl.textContent = "实时数据加载失败";
+    console.error(err);
+  }
+}
+
+loadLiveData();
+</script>

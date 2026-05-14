@@ -1,0 +1,8 @@
+{
+  "updated_at": "manual init",
+  "weather": [],
+  "roads": [],
+  "notes": [
+    "Live data is automatically updated by GitHub Actions. Always verify official road conditions before driving."
+  ]
+}
