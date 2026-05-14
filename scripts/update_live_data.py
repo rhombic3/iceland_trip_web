@@ -91,7 +91,7 @@ def main():
             })
 
     payload = {
-        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "updated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "weather_source": "Open-Meteo",
         "road_source": "Manual/official links; verify at road.is / trafficinfo.is",
         "weather": weather,

@@ -22,8 +22,14 @@
 </main>
 <section class="live-panel">
   <div class="live-header">
-    <h2>实时天气与高地路况</h2>
-    <span id="liveUpdated">更新中...</span>
+    <div>
+      <h2>实时天气与高地路况</h2>
+      <p id="liveUpdated" class="live-updated">最近更新时间：加载中...</p>
+    </div>
+
+    <button id="refreshLiveDataBtn" class="refresh-live-btn" type="button">
+      刷新数据
+    </button>
   </div>
 
   <div id="weatherCards" class="weather-grid"></div>
@@ -70,49 +76,115 @@ async function loadLiveData() {
   const updatedEl = document.getElementById("liveUpdated");
   const weatherEl = document.getElementById("weatherCards");
   const roadEl = document.getElementById("roadCards");
+  const refreshBtn = document.getElementById("refreshLiveDataBtn");
+
+  if (!updatedEl || !weatherEl || !roadEl) return;
 
   try {
-    const res = await fetch(`assets/live-data.json?v=${Date.now()}`);
+    if (refreshBtn) {
+      refreshBtn.disabled = true;
+      refreshBtn.textContent = "刷新中...";
+    }
+
+    updatedEl.textContent = "最近更新时间：加载中...";
+
+    const res = await fetch(`assets/live-data.json?v=${Date.now()}`, {
+      cache: "no-store"
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
     const data = await res.json();
 
-    updatedEl.textContent = `Last updated: ${new Date(data.updated_at).toLocaleString()}`;
+    const updatedAt = data.updated_at
+      ? new Date(data.updated_at).toLocaleString("zh-CN", {
+          timeZone: "Europe/Copenhagen",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit"
+        })
+      : "未知";
 
-    weatherEl.innerHTML = data.weather.map(w => {
+    updatedEl.textContent = `最近更新时间：${updatedAt}`;
+
+    weatherEl.innerHTML = (data.weather || []).map(w => {
       if (w.error) {
         return `
           <article class="live-card">
-            <h4>${w.name}</h4>
+            <h4>${w.name || "未知地点"}</h4>
             <p>天气获取失败</p>
           </article>
         `;
       }
 
       const c = w.current || {};
+
       return `
         <article class="live-card">
-          <h4>${w.name}</h4>
-          <p>🌡️ ${c.temperature ?? "-"} °C</p>
-          <p>🌧️ ${c.precipitation ?? "-"} mm</p>
-          <p>💨 ${c.wind_speed ?? "-"} km/h</p>
-          <p>🌬️ Gust ${c.wind_gusts ?? "-"} km/h</p>
+          <h4>${w.name || "未知地点"}</h4>
+          <p>🌡️ 温度：${c.temperature ?? "-"} °C</p>
+          <p>🌧️ 降水：${c.precipitation ?? "-"} mm</p>
+          <p>💨 风速：${c.wind_speed ?? "-"} km/h</p>
+          <p>🌬️ 阵风：${c.wind_gusts ?? "-"} km/h</p>
         </article>
       `;
     }).join("");
 
-    roadEl.innerHTML = data.roads.map(r => `
+    roadEl.innerHTML = (data.roads || []).map(r => `
       <article class="live-card road-card">
-        <h4>${r.name}</h4>
-        <p>${r.status}</p>
+        <h4>${r.name || "未知路段"}</h4>
+        <p>${r.status || "请查看官方来源"}</p>
         <p>${r.note || ""}</p>
-        <a href="${r.url}" target="_blank" rel="noopener">查看官方路况</a>
+        ${r.url ? `<a href="${r.url}" target="_blank" rel="noopener">查看官方路况</a>` : ""}
       </article>
     `).join("");
 
+    if (!data.weather?.length) {
+      weatherEl.innerHTML = `
+        <article class="live-card">
+          <h4>暂无天气数据</h4>
+          <p>等待 GitHub Actions 生成最新数据。</p>
+        </article>
+      `;
+    }
+
+    if (!data.roads?.length) {
+      roadEl.innerHTML = `
+        <article class="live-card">
+          <h4>暂无路况数据</h4>
+          <p>等待 GitHub Actions 生成最新数据。</p>
+        </article>
+      `;
+    }
+
   } catch (err) {
-    updatedEl.textContent = "实时数据加载失败";
     console.error(err);
+    updatedEl.textContent = "最近更新时间：数据加载失败";
+
+    weatherEl.innerHTML = `
+      <article class="live-card">
+        <h4>数据加载失败</h4>
+        <p>请稍后重试，或检查 assets/live-data.json 是否存在。</p>
+      </article>
+    `;
+  } finally {
+    if (refreshBtn) {
+      refreshBtn.disabled = false;
+      refreshBtn.textContent = "刷新数据";
+    }
   }
 }
 
-loadLiveData();
+document.addEventListener("DOMContentLoaded", () => {
+  loadLiveData();
+
+  const refreshBtn = document.getElementById("refreshLiveDataBtn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", loadLiveData);
+  }
+});
 </script>
