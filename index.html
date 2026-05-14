@@ -41,6 +41,24 @@
     注意：本页仅用于快速查看，出发前请以 road.is / trafficinfo.is / vedur.is / SafeTravel 为准。
   </p>
 </section>
+<section class="official-weather-frame">
+  <div class="section-header">
+    <h3>官方天气图层 · Vedur.is</h3>
+    <p>风、温度、降水官方 iframe，仅作快速查看。</p>
+  </div>
+
+  <div class="vedur-frame-box">
+    <script type="text/javascript" src="https://vedur.is/js/iframe.js"></script>
+    <script type="text/javascript">
+      if (window.VI && VI.ifrm) {
+        VI.ifrm.type = 'wel';
+        VI.ifrm.area = 101;
+        VI.ifrm.lang = 'en';
+        VI.ifrm.displayWeather();
+      }
+    </script>
+  </div>
+</section>
 <footer class="resourceFooter">
   <h2>实用网站与补给建议</h2>
   <p>高地日和长途驾驶前建议每天早晚各查一次道路、天气和安全信息；超市尽量在大城镇提前补齐，东峡湾/西峡湾/高地路段不要假设随时能买到便宜食物。</p>
@@ -100,7 +118,7 @@ async function loadLiveData() {
 
     const updatedAt = data.updated_at
       ? new Date(data.updated_at).toLocaleString("zh-CN", {
-          timeZone: "Europe/Copenhagen",
+          timeZone: "Atlantic/Reykjavik",
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
@@ -109,56 +127,116 @@ async function loadLiveData() {
         })
       : "未知";
 
-    updatedEl.textContent = `最近更新时间：${updatedAt}`;
+    updatedEl.textContent = `最近更新时间：${updatedAt}（冰岛时间）`;
 
-    weatherEl.innerHTML = (data.weather || []).map(w => {
-      if (w.error) {
+    weatherEl.innerHTML = renderDailyWeather(data.daily_weather || []);
+    roadEl.innerHTML = renderRoadGroups(data.road_groups || []);
+
+    function fmtTemp(min, max) {
+      if (min == null && max == null) return "-";
+      if (min == null) return `${Math.round(max)}°C`;
+      if (max == null) return `${Math.round(min)}°C`;
+      return `${Math.round(min)}–${Math.round(max)}°C`;
+    }
+
+    function fmtValue(v, unit) {
+      return v == null ? "-" : `${v}${unit}`;
+    }
+
+    function renderDailyWeather(days) {
+      if (!days || !days.length) {
         return `
           <article class="live-card">
-            <h4>${w.name || "未知地点"}</h4>
-            <p>天气获取失败</p>
+            <h4>暂无天气数据</h4>
+            <p>等待 GitHub Actions 生成最新数据。</p>
           </article>
         `;
       }
 
-      const c = w.current || {};
+      return days.map((day, index) => {
+        const places = day.places || [];
 
-      return `
-        <article class="live-card">
-          <h4>${w.name || "未知地点"}</h4>
-          <p>🌡️ 温度：${c.temperature ?? "-"} °C</p>
-          <p>🌧️ 降水：${c.precipitation ?? "-"} mm</p>
-          <p>💨 风速：${c.wind_speed ?? "-"} km/h</p>
-          <p>🌬️ 阵风：${c.wind_gusts ?? "-"} km/h</p>
-        </article>
-      `;
-    }).join("");
+        const summary = places.map(p => {
+          if (p.error) {
+            return `<span class="weather-chip error-chip">❔ ${p.name} 暂无预报</span>`;
+          }
 
-    roadEl.innerHTML = (data.roads || []).map(r => `
-      <article class="live-card road-card">
-        <h4>${r.name || "未知路段"}</h4>
-        <p>${r.status || "请查看官方来源"}</p>
-        <p>${r.note || ""}</p>
-        ${r.url ? `<a href="${r.url}" target="_blank" rel="noopener">查看官方路况</a>` : ""}
-      </article>
-    `).join("");
+          return `
+            <span class="weather-chip">
+              ${p.icon || "❔"} ${p.name} · ${p.summary || "未知"} · ${fmtTemp(p.temperature_min, p.temperature_max)}
+            </span>
+          `;
+        }).join("");
 
-    if (!data.weather?.length) {
-      weatherEl.innerHTML = `
-        <article class="live-card">
-          <h4>暂无天气数据</h4>
-          <p>等待 GitHub Actions 生成最新数据。</p>
-        </article>
-      `;
+        const details = places.map(p => `
+          <div class="weather-detail-row">
+            <div>
+              <strong>${p.icon || "❔"} ${p.name}</strong>
+              <div class="muted">${p.summary || "未知"} · ${fmtTemp(p.temperature_min, p.temperature_max)}</div>
+            </div>
+            <div class="weather-detail-grid">
+              <span>降雨量：${fmtValue(p.precipitation_sum, " mm")}</span>
+              <span>降雨概率：${fmtValue(p.precipitation_probability_max, "%")}</span>
+              <span>最大风速：${fmtValue(p.wind_speed_max, " km/h")}</span>
+              <span>最大阵风：${fmtValue(p.wind_gusts_max, " km/h")}</span>
+            </div>
+          </div>
+        `).join("");
+
+        return `
+          <details class="day-weather-card" ${index === 0 ? "open" : ""}>
+            <summary>
+              <div>
+                <strong>${day.title || day.date}</strong>
+                <span class="muted">${day.date || ""}</span>
+              </div>
+              <div class="weather-chip-row">${summary}</div>
+            </summary>
+            <div class="weather-details">
+              ${details}
+            </div>
+          </details>
+        `;
+      }).join("");
     }
 
-    if (!data.roads?.length) {
-      roadEl.innerHTML = `
-        <article class="live-card">
-          <h4>暂无路况数据</h4>
-          <p>等待 GitHub Actions 生成最新数据。</p>
+    function statusClass(open) {
+      if (open === true) return "status-open";
+      if (open === false) return "status-closed";
+      return "status-unknown";
+    }
+
+    function renderRoadGroups(groups) {
+      if (!groups || !groups.length) {
+        return `
+          <article class="live-card">
+            <h4>暂无路况数据</h4>
+            <p>等待 GitHub Actions 生成最新数据。</p>
+          </article>
+        `;
+      }
+
+      return groups.map(group => `
+        <article class="road-group-card">
+          <h4>${group.destination}</h4>
+          <div class="road-route-list">
+            ${(group.routes || []).map(route => `
+              <div class="road-route-row">
+                <div>
+                  <strong>${route.road}</strong>
+                  <div class="muted">${route.label || ""}</div>
+                </div>
+                <div class="road-status ${statusClass(route.open)}">
+                  ${route.icon || "❔"} ${route.status || "Unknown"}
+                </div>
+                <a href="${route.official_url || "https://umferdin.is/en"}" target="_blank" rel="noopener">
+                  官方
+                </a>
+              </div>
+            `).join("")}
+          </div>
         </article>
-      `;
+      `).join("");
     }
 
   } catch (err) {

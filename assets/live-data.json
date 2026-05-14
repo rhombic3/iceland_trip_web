@@ -1,8 +1,317 @@
 {
-  "updated_at": "2026-05-15T12:00:00Z",
-  "weather": [],
-  "roads": [],
-  "notes": [
-    "Live data is automatically updated by GitHub Actions. Always verify official road conditions before driving."
+  "updated_at": "2026-05-14T23:13:17+00:00",
+  "weather_source": "Open-Meteo",
+  "road_source": "Manual/official links; verify at road.is / trafficinfo.is",
+  "weather": [
+    {
+      "name": "Reykjavík",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "current": {
+        "temperature": 6.7,
+        "precipitation": 0.0,
+        "wind_speed": 11.2,
+        "wind_gusts": 18.0,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          8.8,
+          8.4,
+          8.0
+        ],
+        "temperature_2m_min": [
+          5.5,
+          6.0,
+          6.0
+        ],
+        "precipitation_sum": [
+          0.7,
+          0.4,
+          6.3
+        ],
+        "wind_speed_10m_max": [
+          17.6,
+          32.4,
+          38.9
+        ]
+      }
+    },
+    {
+      "name": "Landmannalaugar",
+      "lat": 63.9926,
+      "lon": -19.0609,
+      "current": {
+        "temperature": 0.9,
+        "precipitation": 0.0,
+        "wind_speed": 11.9,
+        "wind_gusts": 15.1,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          2.5,
+          2.5,
+          1.5
+        ],
+        "temperature_2m_min": [
+          -3.3,
+          0.8,
+          0.3
+        ],
+        "precipitation_sum": [
+          0.0,
+          0.9,
+          9.0
+        ],
+        "wind_speed_10m_max": [
+          18.4,
+          37.4,
+          50.4
+        ]
+      }
+    },
+    {
+      "name": "Mælifell / Fjallabak area",
+      "lat": 63.799,
+      "lon": -18.933,
+      "current": {
+        "temperature": 0.7,
+        "precipitation": 0.0,
+        "wind_speed": 14.0,
+        "wind_gusts": 18.0,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          1.3,
+          1.6,
+          1.6
+        ],
+        "temperature_2m_min": [
+          -5.3,
+          -0.2,
+          0.0
+        ],
+        "precipitation_sum": [
+          0.2,
+          12.6,
+          33.7
+        ],
+        "wind_speed_10m_max": [
+          14.0,
+          32.8,
+          52.2
+        ]
+      }
+    },
+    {
+      "name": "Þórsmörk",
+      "lat": 63.6806,
+      "lon": -19.4828,
+      "current": {
+        "temperature": 4.0,
+        "precipitation": 0.0,
+        "wind_speed": 5.8,
+        "wind_gusts": 12.6,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          7.6,
+          8.3,
+          7.2
+        ],
+        "temperature_2m_min": [
+          0.3,
+          3.1,
+          5.2
+        ],
+        "precipitation_sum": [
+          0.0,
+          0.2,
+          3.8
+        ],
+        "wind_speed_10m_max": [
+          17.6,
+          37.8,
+          60.8
+        ]
+      }
+    },
+    {
+      "name": "Vík",
+      "lat": 63.4186,
+      "lon": -19.006,
+      "current": {
+        "temperature": 6.7,
+        "precipitation": 0.0,
+        "wind_speed": 13.3,
+        "wind_gusts": 18.4,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          7.8,
+          7.6,
+          7.4
+        ],
+        "temperature_2m_min": [
+          3.2,
+          5.5,
+          5.1
+        ],
+        "precipitation_sum": [
+          0.2,
+          7.4,
+          20.0
+        ],
+        "wind_speed_10m_max": [
+          19.4,
+          36.4,
+          45.4
+        ]
+      }
+    },
+    {
+      "name": "Jökulsárlón",
+      "lat": 64.0481,
+      "lon": -16.1794,
+      "current": {
+        "temperature": 6.0,
+        "precipitation": 0.0,
+        "wind_speed": 1.8,
+        "wind_gusts": 6.5,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          6.0,
+          7.0,
+          7.1
+        ],
+        "temperature_2m_min": [
+          3.8,
+          5.1,
+          4.5
+        ],
+        "precipitation_sum": [
+          6.0,
+          5.6,
+          2.0
+        ],
+        "wind_speed_10m_max": [
+          20.2,
+          19.8,
+          31.3
+        ]
+      }
+    },
+    {
+      "name": "Akureyri",
+      "lat": 65.6885,
+      "lon": -18.1262,
+      "current": {
+        "temperature": 5.6,
+        "precipitation": 0.0,
+        "wind_speed": 3.6,
+        "wind_gusts": 6.1,
+        "time": "2026-05-14T23:00"
+      },
+      "daily": {
+        "time": [
+          "2026-05-14",
+          "2026-05-15",
+          "2026-05-16"
+        ],
+        "temperature_2m_max": [
+          10.0,
+          12.0,
+          12.7
+        ],
+        "temperature_2m_min": [
+          1.7,
+          3.7,
+          5.4
+        ],
+        "precipitation_sum": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "wind_speed_10m_max": [
+          13.0,
+          13.7,
+          15.1
+        ]
+      }
+    }
+  ],
+  "roads": [
+    {
+      "name": "F208 North / Landmannalaugar access",
+      "status": "Check official source",
+      "url": "https://umferdin.is/en",
+      "note": "Check before driving to Landmannalaugar."
+    },
+    {
+      "name": "F208 South",
+      "status": "Check official source",
+      "url": "https://umferdin.is/en",
+      "note": "Often opens later than northern access."
+    },
+    {
+      "name": "F210 / Mælifell area",
+      "status": "Check official source",
+      "url": "https://umferdin.is/en",
+      "note": "Highland route; river crossings and closures possible."
+    },
+    {
+      "name": "F249 / Þórsmörk",
+      "status": "Check official source",
+      "url": "https://umferdin.is/en",
+      "note": "River crossings; usually not suitable for normal SUVs."
+    },
+    {
+      "name": "F26 Sprengisandur",
+      "status": "Check official source",
+      "url": "https://umferdin.is/en",
+      "note": "Long remote highland route; do not rely on historical opening dates."
+    }
+  ],
+  "warnings": [
+    "Weather and highland road conditions change quickly in Iceland.",
+    "Always verify road status on road.is / trafficinfo.is before driving.",
+    "Do not drive closed highland roads even if maps or old reports suggest they may be passable."
   ]
 }
