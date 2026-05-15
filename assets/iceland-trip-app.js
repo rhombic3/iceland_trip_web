@@ -548,86 +548,6 @@ function scrollToElementById(id) {
   });
 }
 
-function vedurSrcDoc(type) {
-  return `
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <base target="_blank">
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: auto;
-    }
-
-    body {
-      min-width: 620px;
-    }
-
-    .vedur-loading {
-      padding: 18px;
-      color: #64748b;
-      font-size: 14px;
-    }
-  </style>
-</head>
-<body>
-  <div class="vedur-loading" id="loading">Loading Vedur.is official forecast...</div>
-
-  <script src="https://vedur.is/js/iframe.js"><\/script>
-  <script>
-    function bootVedur() {
-      try {
-        var loading = document.getElementById("loading");
-        if (loading) loading.remove();
-
-        if (window.VI && VI.ifrm) {
-          VI.ifrm.type = "${type}";
-          VI.ifrm.area = 101;
-          VI.ifrm.lang = "en";
-          VI.ifrm.displayWeather();
-        } else {
-          document.body.innerHTML = "<div class='vedur-loading'>Failed to load Vedur.is iframe script.</div>";
-        }
-      } catch (err) {
-        document.body.innerHTML = "<div class='vedur-loading'>Vedur.is iframe failed to render.</div>";
-      }
-    }
-
-    if (document.readyState === "complete") {
-      bootVedur();
-    } else {
-      window.addEventListener("load", bootVedur);
-    }
-  <\/script>
-</body>
-</html>`;
-}
-
-function loadVedurFrame(type) {
-  const frameId = type === 'wst' ? 'vedurWstFrame' : 'vedurWelFrame';
-  const frame = byId(frameId);
-  if (!frame) return;
-
-  // Force refresh by resetting srcdoc.
-  frame.removeAttribute('src');
-  frame.srcdoc = vedurSrcDoc(type);
-}
-
-function loadVedurOfficialFrames() {
-  loadVedurFrame('wst');
-
-  document.querySelectorAll('[data-vedur-refresh]').forEach(button => {
-    button.addEventListener('click', () => {
-      loadVedurFrame(button.dataset.vedurRefresh);
-    });
-  });
-}
-
 function renderQuickActions() {
   if (byId('quickActions')) return;
 
@@ -671,7 +591,6 @@ function initApp() {
   renderDay(currentDay);
   loadOverview(currentDay);
   renderQuickActions();
-  loadVedurOfficialFrames();
 }
 
 initApp();
