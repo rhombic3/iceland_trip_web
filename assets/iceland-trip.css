@@ -754,7 +754,7 @@
         gap: 7px;
     }
     }
-    
+
     /* ===== Compact sidebar itinerary only ===== */
 
     .sidebar .timeline {
@@ -808,4 +808,67 @@
     .sidebar .timeline .eventLinks a {
     font-size: 9.8px !important;
     padding: 3px 6px !important;
+    }
+
+    /* ===== Force highland route summary into one line ===== */
+
+    .road-summary-row,
+    .compact-road-segment-row {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-height: 34px !important;
+    padding: 7px 9px !important;
+    }
+
+    .road-segment-main {
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    }
+
+    .road-segment-main strong {
+    flex: 0 0 auto !important;
+    display: inline !important;
+    font-size: 0.8rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    }
+
+    .road-segment-main span {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: block !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    }
+
+    /* 路线标题也强制一行 */
+    .road-option-head {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 8px !important;
+    }
+
+    .road-option-title {
+    min-width: 0 !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    }
+
+    /* 高地目的地标题也避免换行撑高 */
+    .road-group-card h4 {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
     }
