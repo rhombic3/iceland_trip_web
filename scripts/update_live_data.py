@@ -23,144 +23,106 @@ ROAD_GROUPS = [
             {
                 "name": "F26 + F208 North",
                 "segments": [
-                    {
-                        "road": "F26",
-                        "label": "Hringvegur → Vatnsfellsvirkjun",
-                        "must_include": ["F26"],
-                        "any_include": ["Hringvegur", "Vatnsfellsvirkjun", "Þjóðvegur", "Thjodvegur"],
-                    },
-                    {
-                        "road": "F208",
-                        "label": "Vatnsfellsvirkjun → Landmannalaugar",
-                        "must_include": ["F208"],
-                        "any_include": ["Vatnsfellsvirkjun", "Landmannalaugar", "Fjallabaksleið nyrðri", "Fjallabaksleid nyrdri"],
-                    },
+                    {"road": "26", "label": "Landvegur: Hringvegur - Laugaland", "official_name": "Landvegur : Hringvegur - Laugaland"},
+                    {"road": "26", "label": "Landvegur: Laugaland - Bjallavegur", "official_name": "Landvegur: Laugaland - Bjallavegur"},
+                    {"road": "26", "label": "Landvegur: Bjallavegur - Galtalækur", "official_name": "Landvegur : Bjallavegur - Galtalækur"},
+                    {"road": "26", "label": "Landvegur: Galtalækur - Þjórsárdalsvegur", "official_name": "Landvegur : Galtalækur - Þjórsárdalsvegur"},
+                    {"road": "26", "label": "Þjórsárdalsvegur - Vatnsfellsvirkjun", "official_name": "Þjórsárdalsvegur - Vatnsfellsvirkjun"},
+                    {"road": "208", "label": "Sigalda - Landmannalaugar", "official_name": "Fjallabaksleið nyrðri: Sigalda - Landmannalaugar"},
                 ],
             },
             {
-                "name": "F225 Landmannaleið",
+                "name": "F26 + F225",
                 "segments": [
-                    {
-                        "road": "F225",
-                        "label": "Landmannaleið",
-                        "must_include": ["F225"],
-                        "any_include": ["Landmannaleið", "Landmannaleid"],
-                    },
+                    {"road": "26", "label": "Landvegur: Hringvegur - Laugaland", "official_name": "Landvegur : Hringvegur - Laugaland"},
+                    {"road": "26", "label": "Landvegur: Laugaland - Bjallavegur", "official_name": "Landvegur: Laugaland - Bjallavegur"},
+                    {"road": "26", "label": "Landvegur: Bjallavegur - Galtalækur", "official_name": "Landvegur : Bjallavegur - Galtalækur"},
+                    {"road": "26", "label": "Landvegur: Galtalækur - Þjórsárdalsvegur", "official_name": "Landvegur : Galtalækur - Þjórsárdalsvegur"},
+                    {"road": "225", "label": "Landmannaleið vestan Heklu", "official_name": "Landmannaleið vestan Heklu"},
+                    {"road": "225", "label": "Landmannaleið: Hekla - Landmannahellir", "official_name": "Landmannaleið: Hekla - Landmannahellir"},
+                    {"road": "225", "label": "Landmannaleið: Landmannahellir - Fjallabak N", "official_name": "Landmannaleið: Landmannahellir - Fjallabak N"},
                 ],
             },
             {
                 "name": "F208 South",
                 "segments": [
-                    {
-                        "road": "F208",
-                        "label": "F208 South / Eldgjá side",
-                        "must_include": ["F208"],
-                        "any_include": ["Eldgjá", "Eldgja", "Skaftártunga", "Fjallabaksleið syðri", "Fjallabaksleid sydri"],
-                    },
+                    {"road": "208", "label": "Skaftártunguvegur austan Flögu", "official_name": "Skaftártunguvegur austan Flögu"},
+                    {"road": "208", "label": "Skaftártunguvegur og Ljótarstaðavegur", "official_name": "Skaftártunguvegur og Ljótarstaðavegur"},
+                    {"road": "208", "label": "Búland - Eldgjá", "official_name": "Fjallabaksleið nyrðri: Búland - Eldgjá"},
+                    {"road": "208", "label": "Eldgjá - Landmannalaugavegur", "official_name": "Fjallabaksleið nyrðri: Eldgjá - Landmannalaugavegur"},
                 ],
             },
         ],
     },
+
     {
         "destination": "Mælifell / 抹茶山",
         "route_options": [
             {
-                "name": "Vík → F232 → F210",
+                "name": "F232 + F210",
                 "segments": [
-                    {
-                        "road": "F232",
-                        "label": "F232 Öldufellsleið",
-                        "must_include": ["F232"],
-                        "any_include": ["Öldufellsleið", "Oldufellsleid"],
-                    },
-                    {
-                        "road": "F210",
-                        "label": "F210 near Mælifell",
-                        "must_include": ["F210"],
-                        "any_include": ["Mælifell", "Maelifell", "Fjallabaksleið syðri", "Fjallabaksleid sydri"],
-                    },
+                    {"road": "232", "label": "Öldufellsleið", "official_name": "Öldufellsleið"},
+                    {"road": "210", "label": "Snæbýli - Emstruleið", "official_name": "Fjallabaksleið syðri: Snæbýli - Emstruleið"},
                 ],
             },
             {
-                "name": "F210 direct",
+                "name": "F210 West",
                 "segments": [
-                    {
-                        "road": "F210",
-                        "label": "F210 Fjallabaksleið syðri",
-                        "must_include": ["F210"],
-                        "any_include": ["Fjallabaksleið syðri", "Fjallabaksleid sydri", "Mælifell", "Maelifell"],
-                    },
+                    {"road": "210", "label": "Snæbýli - Emstruleið", "official_name": "Fjallabaksleið syðri: Snæbýli - Emstruleið"},
+                    {"road": "210", "label": "Emstruleið - Rangárvallavegur", "official_name": "Fjallabaksleið syðri: Emstruleið - Rangárvallavegur"},
                 ],
             },
             {
-                "name": "F233 / F210 alternative",
+                "name": "F261 + F210",
                 "segments": [
-                    {
-                        "road": "F233",
-                        "label": "F233 Álftavatnskrókur",
-                        "must_include": ["F233"],
-                        "any_include": ["Álftavatnskrókur", "Alftavatnskrokur"],
-                    },
-                    {
-                        "road": "F210",
-                        "label": "F210 connection",
-                        "must_include": ["F210"],
-                        "any_include": ["Fjallabaksleið syðri", "Fjallabaksleid sydri", "Mælifell", "Maelifell"],
-                    },
+                    {"road": "261", "label": "Emstruleið", "official_name": "Emstruleið"},
+                    {"road": "210", "label": "Snæbýli - Emstruleið", "official_name": "Fjallabaksleið syðri: Snæbýli - Emstruleið"},
                 ],
             },
         ],
     },
+
     {
         "destination": "Þórsmörk",
         "route_options": [
             {
                 "name": "F249",
                 "segments": [
-                    {
-                        "road": "F249",
-                        "label": "F249 Þórsmerkurvegur",
-                        "must_include": ["F249"],
-                        "any_include": ["Þórsmerkurvegur", "Thorsmerkurvegur", "Þórsmörk", "Thorsmork"],
-                    },
+                    {"road": "249", "label": "að Seljalandsfossi", "official_name": "Þórsmerkurvegur að Seljalandsfossi"},
+                    {"road": "249", "label": "Seljalandsfoss - Merkurvegur", "official_name": "Þórsmerkurvegur: Seljalandsfoss - Merkurvegur"},
+                    {"road": "249", "label": "Merkurvegur - Stóra-Mörk", "official_name": "Þórsmerkurvegur: Merkurvegur - Stóra-Mörk"},
+                    {"road": "249", "label": "Stóra-Mörk - Nauthúsagil", "official_name": "Þórsmerkurvegur: Stóra-Mörk - Nauthúsagil"},
+                    {"road": "249", "label": "Nauthúsagil - Jökultungur", "official_name": "Þórsmerkurvegur: Nauthúsagil - Jökultungur"},
+                    {"road": "249", "label": "Jökultungur - Básar", "official_name": "Þórsmerkurvegur: Jökultungur - Básar"},
                 ],
             },
         ],
     },
+
     {
         "destination": "Kerlingarfjöll",
         "route_options": [
             {
                 "name": "35 + F347",
                 "segments": [
-                    {
-                        "road": "35",
-                        "label": "Road 35 / Kjölur",
-                        "must_include": ["35"],
-                        "any_include": ["Kjalvegur", "Kjölur", "Kjolur"],
-                    },
-                    {
-                        "road": "F347",
-                        "label": "F347 Kerlingarfjallavegur",
-                        "must_include": ["F347"],
-                        "any_include": ["Kerlingarfjallavegur", "Kerlingarfjöll", "Kerlingarfjoll"],
-                    },
+                    {"road": "35", "label": "Múli - Gullfoss", "official_name": "Biskupstungnabraut: Múli - Gullfoss"},
+                    {"road": "35", "label": "Gullfoss - Hagavatnsvegur", "official_name": "Kjalvegur: Gullfoss - Hagavatnsvegur"},
+                    {"road": "35", "label": "Hagavatnsvegur - Bláfellsháls", "official_name": "Kjalvegur: Hagavatnsvegur - Bláfellsháls"},
+                    {"road": "35", "label": "Bláfellsháls - Kerlingarfjallavegur", "official_name": "Kjalvegur: Bláfellsháls - Kerlingarfjallavegur"},
+                    {"road": "347", "label": "Kerlingarfjallavegur", "official_name": "Kerlingarfjallavegur"},
+                    {"road": "347", "label": "Ásgarður - Hveradalir", "official_name": "Ásgarður - Hveradalir"},
                 ],
             },
         ],
     },
+
     {
         "destination": "Þakgil",
         "route_options": [
             {
                 "name": "Road 214",
                 "segments": [
-                    {
-                        "road": "214",
-                        "label": "Road 214 to Þakgil",
-                        "must_include": ["214"],
-                        "any_include": ["Þakgil", "Thakgil"],
-                    },
+                    {"road": "214", "label": "Kerlingardalsvegur: Þakgil", "official_name": "Kerlingardalsvegur: Þakgil"},
                 ],
             },
         ],
@@ -329,6 +291,18 @@ def normalize_text(s):
     s = re.sub(r"\s+", " ", s)
     return s
 
+def canonical_road_name(s):
+    """
+    Normalize official Icelandic road-section names for robust exact matching.
+    Handles spacing around ':' and '-' and small punctuation differences.
+    """
+    s = normalize_text(s)
+    s = s.replace("：", ":")
+    s = s.replace("–", "-").replace("—", "-")
+    s = re.sub(r"\s*:\s*", ":", s)
+    s = re.sub(r"\s*-\s*", "-", s)
+    s = re.sub(r"\s+", " ", s)
+    return s.strip()
 
 def fetch_road_sections():
     data = fetch_json(ROAD_STATUS_URL)
@@ -357,25 +331,59 @@ def section_text(section):
     ]
     return normalize_text(" ".join(str(p) for p in parts if p))
 
+def normalize_section_id(x):
+    if x is None:
+        return ""
+    return str(x).replace(".0", "").strip()
 
-def match_sections(sections, must_include=None, any_include=None):
-    must_include = [normalize_text(x) for x in (must_include or [])]
-    any_include = [normalize_text(x) for x in (any_include or [])]
+def get_section_id(sec):
+    return normalize_section_id(
+        sec.get("IdButur")
+        or sec.get("ButurID")
+        or sec.get("Id")
+        or sec.get("id")
+    )
+
+def match_sections(sections, section_ids=None, official_name=None, match_all=None, match_any=None):
+    section_ids = {normalize_section_id(x) for x in (section_ids or [])}
+    match_all = [normalize_text(x) for x in (match_all or [])]
+    match_any = [normalize_text(x) for x in (match_any or [])]
+
+    target_name = canonical_road_name(official_name) if official_name else None
 
     matched = []
-    for sec in sections:
-        text = section_text(sec)
 
-        if must_include and not all(k in text for k in must_include):
+    for sec in sections:
+        sec_id = get_section_id(sec)
+
+        if section_ids:
+            if sec_id in section_ids:
+                matched.append(sec)
             continue
 
-        if any_include and not any(k in text for k in any_include):
+        full_name = sec.get("FulltNafnButs") or ""
+        short_name = sec.get("StuttNafnButs") or ""
+
+        if target_name:
+            full_norm = canonical_road_name(full_name)
+            short_norm = canonical_road_name(short_name)
+
+            # 优先 full name 精确匹配；short name 作为兜底。
+            if target_name == full_norm or target_name == short_norm:
+                matched.append(sec)
+            continue
+
+        text = section_text(sec)
+
+        if match_all and not all(k in text for k in match_all):
+            continue
+
+        if match_any and not any(k in text for k in match_any):
             continue
 
         matched.append(sec)
 
     return matched
-
 
 def route_status_from_sections(sections):
     if not sections:
@@ -467,8 +475,10 @@ def fetch_road_groups():
             for seg in option["segments"]:
                 matched = match_sections(
                     sections,
-                    must_include=seg.get("must_include"),
-                    any_include=seg.get("any_include"),
+                    section_ids=seg.get("section_ids"),
+                    official_name=seg.get("official_name"),
+                    match_all=seg.get("match_all"),
+                    match_any=seg.get("match_any"),
                 )
                 status = route_status_from_sections(matched)
 
@@ -482,7 +492,9 @@ def fetch_road_groups():
                     "matched_count": len(matched),
                     "matched_sections": [
                         {
+                            "id": get_section_id(sec),
                             "name": sec.get("FulltNafnButs") or sec.get("StuttNafnButs"),
+                            "short_name": sec.get("StuttNafnButs"),
                             "condition": sec.get("AstandYfirbord") or sec.get("Astand"),
                             "condition_en": sec.get("AstandLysingEn") or sec.get("AstandLysing"),
                             "registered_at": sec.get("DagsSkrad"),

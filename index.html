@@ -127,7 +127,7 @@ async function loadLiveData() {
         })
       : "未知";
 
-    updatedEl.textContent = `最近更新时间：${updatedAt}（冰岛时间）`;
+    updatedEl.textContent = `最近更新时间：${updatedAt}（冰岛时间） 暂无旅行日天气时，默认显示今日天气`;
 
     weatherEl.innerHTML = renderDailyWeather(data.daily_weather || []);
     roadEl.innerHTML = renderRoadGroups(data.road_groups || []);

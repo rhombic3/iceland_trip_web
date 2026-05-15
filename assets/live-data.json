@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T01:07:07+00:00",
+  "updated_at": "2026-05-15T02:10:24+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -136,7 +136,7 @@
       "id": "d2",
       "date": "2026-06-08",
       "tab": "6/8",
-      "title": "南岸瀑布黑沙滩",
+      "title": "南岸瀑布",
       "isAlternative": false,
       "places": [
         {
@@ -414,7 +414,7 @@
       "id": "d4",
       "date": "2026-06-10",
       "tab": "6/10",
-      "title": "东峡湾 · 峡谷",
+      "title": "东峡湾峡谷",
       "isAlternative": false,
       "places": [
         {
@@ -652,7 +652,7 @@
       "id": "d6",
       "date": "2026-06-12",
       "tab": "6/12",
-      "title": "巨魔半岛 · 西峡湾",
+      "title": "西北峡湾",
       "isAlternative": false,
       "places": [
         {
@@ -1026,7 +1026,7 @@
       "id": "alt_mael",
       "date": "2026-05-15",
       "tab": "抹茶山",
-      "title": "Mælifell 抹茶山路线开放时",
+      "title": "Mælifell 抹茶山",
       "isAlternative": false,
       "places": [
         {
@@ -1051,7 +1051,7 @@
       "id": "alt_westman",
       "date": "2026-05-15",
       "tab": "西人岛",
-      "title": "备选方案一 · 西人岛",
+      "title": "西人岛",
       "isAlternative": false,
       "places": [
         {
@@ -1092,7 +1092,7 @@
       "id": "alt_thakgil",
       "date": "2026-05-15",
       "tab": "Þakgil",
-      "title": "备选方案二 · Þakgil 徒步",
+      "title": "Þakgil 徒步",
       "isAlternative": false,
       "places": [
         {
@@ -1149,7 +1149,7 @@
       "id": "alt_laki",
       "date": "2026-05-15",
       "tab": "Laki",
-      "title": "备选方案三 · Laki 火山",
+      "title": "Laki 火山",
       "isAlternative": false,
       "places": [
         {
@@ -1195,69 +1195,365 @@
           "name": "F26 + F208 North",
           "segments": [
             {
-              "road": "F26",
-              "label": "Hringvegur → Vatnsfellsvirkjun",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "26",
+              "label": "Landvegur: Hringvegur - Laugaland",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901330035",
+                  "name": "Landvegur : Hringvegur - Laugaland",
+                  "short_name": "Hringvegur-Laugaland",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             },
             {
-              "road": "F208",
-              "label": "Vatnsfellsvirkjun → Landmannalaugar",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "26",
+              "label": "Landvegur: Laugaland - Bjallavegur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901340035",
+                  "name": "Landvegur: Laugaland - Bjallavegur",
+                  "short_name": "Laugaland-Bjallavegur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "26",
+              "label": "Landvegur: Bjallavegur - Galtalækur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901350035",
+                  "name": "Landvegur : Bjallavegur - Galtalækur",
+                  "short_name": "Bjallavegur-Galtalækur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "26",
+              "label": "Landvegur: Galtalækur - Þjórsárdalsvegur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901360035",
+                  "name": "Landvegur : Galtalækur - Þjórsárdalsvegur",
+                  "short_name": "Galtalækur-Þjórsárdalsvegur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "26",
+              "label": "Þjórsárdalsvegur - Vatnsfellsvirkjun",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "226070035",
+                  "name": "Þjórsárdalsvegur - Vatnsfellsvirkjun",
+                  "short_name": "Þjórsárdalsv.-Vatnsfellsvirkjun",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "208",
+              "label": "Sigalda - Landmannalaugar",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Closed",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913040035",
+                  "name": "Fjallabaksleið nyrðri: Sigalda - Landmannalaugar",
+                  "short_name": "Sigalda-Landmannalaugar",
+                  "condition": "LOKAD",
+                  "condition_en": "Closed",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         },
         {
-          "name": "F225 Landmannaleið",
+          "name": "F26 + F225",
           "segments": [
             {
-              "road": "F225",
-              "label": "Landmannaleið",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "26",
+              "label": "Landvegur: Hringvegur - Laugaland",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901330035",
+                  "name": "Landvegur : Hringvegur - Laugaland",
+                  "short_name": "Hringvegur-Laugaland",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "26",
+              "label": "Landvegur: Laugaland - Bjallavegur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901340035",
+                  "name": "Landvegur: Laugaland - Bjallavegur",
+                  "short_name": "Laugaland-Bjallavegur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "26",
+              "label": "Landvegur: Bjallavegur - Galtalækur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901350035",
+                  "name": "Landvegur : Bjallavegur - Galtalækur",
+                  "short_name": "Bjallavegur-Galtalækur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "26",
+              "label": "Landvegur: Galtalækur - Þjórsárdalsvegur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901360035",
+                  "name": "Landvegur : Galtalækur - Þjórsárdalsvegur",
+                  "short_name": "Galtalækur-Þjórsárdalsvegur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "225",
+              "label": "Landmannaleið vestan Heklu",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913060035",
+                  "name": "Landmannaleið vestan Heklu",
+                  "short_name": "Landmannaleið vestan Heklu",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "225",
+              "label": "Landmannaleið: Hekla - Landmannahellir",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913760035",
+                  "name": "Landmannaleið: Hekla - Landmannahellir",
+                  "short_name": "Hekla-Landmannahellir",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "225",
+              "label": "Landmannaleið: Landmannahellir - Fjallabak N",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913750035",
+                  "name": "Landmannaleið: Landmannahellir - Fjallabak N",
+                  "short_name": "Landmannahellir-Fjallabak N",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         },
         {
           "name": "F208 South",
           "segments": [
             {
-              "road": "F208",
-              "label": "F208 South / Eldgjá side",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "208",
+              "label": "Skaftártunguvegur austan Flögu",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901080035",
+                  "name": "Skaftártunguvegur austan Flögu",
+                  "short_name": "Skaftártunguv. austan Flögu",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "208",
+              "label": "Skaftártunguvegur og Ljótarstaðavegur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901090035",
+                  "name": "Skaftártunguvegur og Ljótarstaðavegur",
+                  "short_name": "Skaftártunguv. og Ljótarstaðav.",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "208",
+              "label": "Búland - Eldgjá",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913020035",
+                  "name": "Fjallabaksleið nyrðri: Búland - Eldgjá",
+                  "short_name": "Búland-Eldgjá",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "208",
+              "label": "Eldgjá - Landmannalaugavegur",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913030035",
+                  "name": "Fjallabaksleið nyrðri: Eldgjá - Landmannalaugavegur",
+                  "short_name": "Eldgjá-Landmannalaugavegur",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         }
       ]
     },
@@ -1265,83 +1561,148 @@
       "destination": "Mælifell / 抹茶山",
       "route_options": [
         {
-          "name": "Vík → F232 → F210",
+          "name": "F232 + F210",
           "segments": [
             {
-              "road": "F232",
-              "label": "F232 Öldufellsleið",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "232",
+              "label": "Öldufellsleið",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913830035",
+                  "name": "Öldufellsleið",
+                  "short_name": "Öldufellsleið",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             },
             {
-              "road": "F210",
-              "label": "F210 near Mælifell",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "210",
+              "label": "Snæbýli - Emstruleið",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Closed",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913070035",
+                  "name": "Fjallabaksleið syðri: Snæbýli - Emstruleið",
+                  "short_name": "Fjbak s. austurhl",
+                  "condition": "LOKAD",
+                  "condition_en": "Closed",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         },
         {
-          "name": "F210 direct",
+          "name": "F210 West",
           "segments": [
             {
-              "road": "F210",
-              "label": "F210 Fjallabaksleið syðri",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
-              "official_url": "https://umferdin.is/en"
-            }
-          ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
-        },
-        {
-          "name": "F233 / F210 alternative",
-          "segments": [
-            {
-              "road": "F233",
-              "label": "F233 Álftavatnskrókur",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "210",
+              "label": "Snæbýli - Emstruleið",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Closed",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913070035",
+                  "name": "Fjallabaksleið syðri: Snæbýli - Emstruleið",
+                  "short_name": "Fjbak s. austurhl",
+                  "condition": "LOKAD",
+                  "condition_en": "Closed",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             },
             {
-              "road": "F210",
-              "label": "F210 connection",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "210",
+              "label": "Emstruleið - Rangárvallavegur",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913080035",
+                  "name": "Fjallabaksleið syðri: Emstruleið - Rangárvallavegur",
+                  "short_name": "Fjallabak syðra vesturhluti",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
+        },
+        {
+          "name": "F261 + F210",
+          "segments": [
+            {
+              "road": "261",
+              "label": "Emstruleið",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913090035",
+                  "name": "Emstruleið",
+                  "short_name": "Emstruleið",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "210",
+              "label": "Snæbýli - Emstruleið",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Closed",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913070035",
+                  "name": "Fjallabaksleið syðri: Snæbýli - Emstruleið",
+                  "short_name": "Fjbak s. austurhl",
+                  "condition": "LOKAD",
+                  "condition_en": "Closed",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            }
+          ],
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         }
       ]
     },
@@ -1352,20 +1713,129 @@
           "name": "F249",
           "segments": [
             {
-              "road": "F249",
-              "label": "F249 Þórsmerkurvegur",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "249",
+              "label": "að Seljalandsfossi",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901190035",
+                  "name": "Þórsmerkurvegur að Seljalandsfossi",
+                  "short_name": "Seljalandsfoss",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "249",
+              "label": "Seljalandsfoss - Merkurvegur",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "901200035",
+                  "name": "Þórsmerkurvegur: Seljalandsfoss - Merkurvegur",
+                  "short_name": "Seljalandsfoss-Merkurvegur",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "249",
+              "label": "Merkurvegur - Stóra-Mörk",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "124930035",
+                  "name": "Þórsmerkurvegur: Merkurvegur - Stóra-Mörk",
+                  "short_name": "Merkurvegur - Stóra-Mörk",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "249",
+              "label": "Stóra-Mörk - Nauthúsagil",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "124940035",
+                  "name": "Þórsmerkurvegur: Stóra-Mörk - Nauthúsagil",
+                  "short_name": "Stóra-Mörk - Nauthúsagil",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "249",
+              "label": "Nauthúsagil - Jökultungur",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913100035",
+                  "name": "Þórsmerkurvegur: Nauthúsagil - Jökultungur",
+                  "short_name": "Nauthúsagil-Jökultungur",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "249",
+              "label": "Jökultungur - Básar",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913110035",
+                  "name": "Þórsmerkurvegur: Jökultungur - Básar",
+                  "short_name": "Jökultungur-Básar",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         }
       ]
     },
@@ -1377,30 +1847,128 @@
           "segments": [
             {
               "road": "35",
-              "label": "Road 35 / Kjölur",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "label": "Múli - Gullfoss",
+              "status": "Open",
+              "open": true,
+              "icon": "✅",
+              "detail": "Easily passable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "902180035",
+                  "name": "Biskupstungnabraut: Múli - Gullfoss",
+                  "short_name": "Múli-Gullfoss",
+                  "condition": "GREIDFAERT",
+                  "condition_en": "Easily passable",
+                  "registered_at": "2026-05-14T02:55:00Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             },
             {
-              "road": "F347",
-              "label": "F347 Kerlingarfjallavegur",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "road": "35",
+              "label": "Gullfoss - Hagavatnsvegur",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913120035",
+                  "name": "Kjalvegur: Gullfoss - Hagavatnsvegur",
+                  "short_name": "Gullfoss-Hagavatnsvegur",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "35",
+              "label": "Hagavatnsvegur - Bláfellsháls",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913430035",
+                  "name": "Kjalvegur: Hagavatnsvegur - Bláfellsháls",
+                  "short_name": "Hagavatnsvegur-Bláfellsháls",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "35",
+              "label": "Bláfellsháls - Kerlingarfjallavegur",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913130035",
+                  "name": "Kjalvegur: Bláfellsháls - Kerlingarfjallavegur",
+                  "short_name": "Bláfellsháls-Kerlingarfjallavegur",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "347",
+              "label": "Kerlingarfjallavegur",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913660035",
+                  "name": "Kerlingarfjallavegur",
+                  "short_name": "Kerlingarfjallavegur",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "347",
+              "label": "Ásgarður - Hveradalir",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "1334730035",
+                  "name": "Ásgarður - Hveradalir",
+                  "short_name": "Ásgarður - Hveradalir",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         }
       ]
     },
@@ -1412,19 +1980,28 @@
           "segments": [
             {
               "road": "214",
-              "label": "Road 214 to Þakgil",
-              "status": "Unknown",
-              "open": null,
-              "icon": "❔",
-              "detail": "No matching official road section found.",
-              "matched_count": 0,
-              "matched_sections": [],
+              "label": "Kerlingardalsvegur: Þakgil",
+              "status": "Closed",
+              "open": false,
+              "icon": "⛔",
+              "detail": "Impassable",
+              "matched_count": 1,
+              "matched_sections": [
+                {
+                  "id": "913840035",
+                  "name": "Kerlingardalsvegur: Þakgil",
+                  "short_name": "Þakgil",
+                  "condition": "OFAERT_VEDUR",
+                  "condition_en": "Impassable",
+                  "registered_at": "2026-05-14T02:55:01Z"
+                }
+              ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Unknown / Check official",
-          "overall_open": null,
-          "overall_icon": "❔"
+          "overall_status": "Closed / Partly closed",
+          "overall_open": false,
+          "overall_icon": "⛔"
         }
       ]
     }
