@@ -143,6 +143,45 @@ async function loadLiveData() {
       return v == null ? "-" : `${v}${unit}`;
     }
 
+    function compactPlaceName(name) {
+      if (!name) return "";
+
+      return String(name)
+        // 去掉中文及中文后的说明
+        .replace(/[\u4e00-\u9fff].*$/g, "")
+        // 去掉一些过长的补充说明
+        .replace(/\s*·.*$/g, "")
+        .replace(/\s*\/.*$/g, "")
+        .replace(/\s*\(.*?\)\s*/g, "")
+        .trim();
+    }
+
+    function shortPlaceName(name, maxLen = 22) {
+      const clean = compactPlaceName(name);
+      if (clean.length <= maxLen) return clean;
+      return clean.slice(0, maxLen - 1) + "…";
+    }
+
+    function fmtTemp(min, max) {
+      if (min == null && max == null) return "-";
+      if (min == null) return `${Math.round(max)}°C`;
+      if (max == null) return `${Math.round(min)}°C`;
+      return `${Math.round(min)}–${Math.round(max)}°C`;
+    }
+
+    function fmtValue(v, unit) {
+      return v == null ? "-" : `${v}${unit}`;
+    }
+
+    function dayWeatherDateLabel(day) {
+      const places = day.places || [];
+      const fallback = places.find(p => p.is_fallback && p.fallback_date);
+      if (fallback) {
+        return `${day.date} · 显示 ${fallback.fallback_date} 天气`;
+      }
+      return day.date || "";
+    }
+
     function renderDailyWeather(days) {
       if (!days || !days.length) {
         return `
@@ -156,20 +195,18 @@ async function loadLiveData() {
       return days.map((day) => {
         const places = day.places || [];
 
-        const placeCards = places.map((p, idx) => {
-          const fallback = p.is_fallback
-            ? `<div class="weather-fallback-note">${p.fallback_note || "目标日期暂无预报，显示今日天气。"}</div>`
-            : "";
+        const placeCards = places.map((p) => {
+          const name = shortPlaceName(p.name);
 
           if (p.error) {
             return `
               <details class="place-weather-card error-card">
                 <summary>
-                  <span class="place-weather-main">❔ ${p.name}</span>
-                  <span class="place-weather-mini">暂无预报</span>
+                  <span class="place-weather-left">❔ <strong>${name}</strong></span>
+                  <span class="place-weather-mini">暂无</span>
                 </summary>
                 <div class="place-weather-detail">
-                  <p>天气数据获取失败：${p.error}</p>
+                  <p>天气数据获取失败</p>
                 </div>
               </details>
             `;
@@ -178,28 +215,30 @@ async function loadLiveData() {
           return `
             <details class="place-weather-card">
               <summary>
-                <span class="place-weather-main">${p.icon || "❔"} ${p.name}</span>
-                <span class="place-weather-mini">${p.summary || "未知"} · ${fmtTemp(p.temperature_min, p.temperature_max)}</span>
+                <span class="place-weather-left">
+                  <span class="weather-icon">${p.icon || "❔"}</span>
+                  <strong>${name}</strong>
+                </span>
+                <span class="place-weather-mini">${fmtTemp(p.temperature_min, p.temperature_max)}</span>
               </summary>
 
               <div class="place-weather-detail">
-                ${fallback}
                 <div class="weather-metric-grid">
                   <div>
                     <strong>${fmtValue(p.precipitation_sum, " mm")}</strong>
-                    <span>预计降雨量</span>
+                    <span>降雨量</span>
                   </div>
                   <div>
                     <strong>${fmtValue(p.precipitation_probability_max, "%")}</strong>
-                    <span>最大降雨概率</span>
+                    <span>降雨概率</span>
                   </div>
                   <div>
                     <strong>${fmtValue(p.wind_speed_max, " km/h")}</strong>
-                    <span>最大风速</span>
+                    <span>风速</span>
                   </div>
                   <div>
                     <strong>${fmtValue(p.wind_gusts_max, " km/h")}</strong>
-                    <span>最大阵风</span>
+                    <span>阵风</span>
                   </div>
                 </div>
               </div>
@@ -210,10 +249,8 @@ async function loadLiveData() {
         return `
           <section class="day-weather-block ${day.isAlternative ? "alternative-weather" : ""}">
             <div class="day-weather-head">
-              <div>
-                <h4>${day.title || day.date}</h4>
-                <p>${day.date || ""}${day.isAlternative ? " · 备选" : ""}</p>
-              </div>
+              <h4>${day.title || day.date}</h4>
+              <p>${dayWeatherDateLabel(day)}${day.isAlternative ? " · 备选" : ""}</p>
             </div>
 
             <div class="place-weather-list">
@@ -228,6 +265,13 @@ async function loadLiveData() {
       if (open === true) return "status-open";
       if (open === false) return "status-closed";
       return "status-unknown";
+    }
+
+    function compactRoadLabel(text, maxLen = 34) {
+      if (!text) return "";
+      const clean = String(text).replace(/\s+/g, " ").trim();
+      if (clean.length <= maxLen) return clean;
+      return clean.slice(0, maxLen - 1) + "…";
     }
 
     function renderRoadGroups(groups) {
@@ -246,9 +290,9 @@ async function loadLiveData() {
 
           <div class="road-option-list">
             ${(group.route_options || []).map(option => `
-              <div class="road-option-card">
+              <section class="road-option-card">
                 <div class="road-option-head">
-                  <strong>${option.name}</strong>
+                  <span class="road-option-title">${compactRoadLabel(option.name, 28)}</span>
                   <span class="road-status ${statusClass(option.overall_open)}">
                     ${option.overall_icon || "❔"} ${option.overall_status || "Unknown"}
                   </span>
@@ -257,9 +301,9 @@ async function loadLiveData() {
                 <div class="road-segment-list">
                   ${(option.segments || []).map(seg => `
                     <div class="road-segment-row">
-                      <div class="road-segment-name">
+                      <div class="road-segment-main">
                         <strong>${seg.road}</strong>
-                        <span>${seg.label || ""}</span>
+                        <span>${compactRoadLabel(seg.label, 30)}</span>
                       </div>
 
                       <span class="road-status ${statusClass(seg.open)}">
@@ -272,7 +316,7 @@ async function loadLiveData() {
                     </div>
                   `).join("")}
                 </div>
-              </div>
+              </section>
             `).join("")}
           </div>
         </article>
