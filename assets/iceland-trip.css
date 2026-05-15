@@ -12,3 +12,918 @@
     .chips button{border:0;background:#121826;color:#fff;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:950;cursor:pointer;box-shadow:0 8px 20px rgba(18,24,38,.14)}
     .chips button:hover{filter:brightness(1.08);transform:translateY(-1px)}
     @media(max-width:860px){#mapFrame{min-height:420px}.mapTop{align-items:flex-start;flex-wrap:wrap}.buttons{width:100%}.btn{flex:1}.drawer{max-height:calc(100% - 58px);border-radius:22px}.gallery,.gallery[data-count="1"],.gallery[data-count="2"],.gallery[data-count="3"],.gallery[data-count="4"]{height:132px}.drawerBody h3{font-size:17px}.drawerBody p{font-size:11.8px}}
+
+    .live-panel {
+    margin: 24px 0;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(12px);
+    }
+
+    .live-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+    }
+
+    .weather-grid,
+    .road-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+    }
+
+    .live-card {
+    padding: 14px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .live-card h4 {
+    margin: 0 0 8px;
+    }
+
+    .live-card p {
+    margin: 4px 0;
+    }
+
+    .live-note {
+    font-size: 0.9rem;
+    color: #64748b;
+    }
+
+    .live-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    }
+
+    .live-updated {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 0.92rem;
+    }
+
+    .refresh-live-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 700;
+    cursor: pointer;
+    background: #0f766e;
+    color: white;
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.22);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    .refresh-live-btn:hover {
+    transform: translateY(-1px);
+    }
+
+    .refresh-live-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    }
+
+    @media (max-width: 640px) {
+    .live-header {
+        align-items: stretch;
+    }
+
+    .refresh-live-btn {
+        width: 100%;
+    }
+    }
+
+    .day-weather-card,
+    .road-group-card {
+    border-radius: 18px;
+    background: rgba(248, 250, 252, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    padding: 14px;
+    margin: 12px 0;
+    }
+
+    .day-weather-card summary {
+    cursor: pointer;
+    list-style: none;
+    }
+
+    .day-weather-card summary::-webkit-details-marker {
+    display: none;
+    }
+
+    .weather-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    }
+
+    .weather-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: white;
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    font-size: 0.88rem;
+    }
+
+    .error-chip {
+    color: #92400e;
+    background: #fffbeb;
+    }
+
+    .weather-details {
+    margin-top: 14px;
+    display: grid;
+    gap: 10px;
+    }
+
+    .weather-detail-row {
+    display: grid;
+    grid-template-columns: minmax(150px, 220px) 1fr;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 14px;
+    background: white;
+    }
+
+    .weather-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 6px 12px;
+    font-size: 0.9rem;
+    }
+
+    .road-group-card h4 {
+    margin: 0 0 10px;
+    }
+
+    .road-route-list {
+    display: grid;
+    gap: 8px;
+    }
+
+    .road-route-row {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: white;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .road-status {
+    padding: 7px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.86rem;
+    white-space: nowrap;
+    }
+
+    .status-open {
+    background: #dcfce7;
+    color: #166534;
+    }
+
+    .status-closed {
+    background: #fee2e2;
+    color: #991b1b;
+    }
+
+    .status-unknown {
+    background: #f1f5f9;
+    color: #475569;
+    }
+
+    .muted {
+    color: #64748b;
+    font-size: 0.88rem;
+    }
+
+    @media (max-width: 720px) {
+    .weather-detail-row {
+        grid-template-columns: 1fr;
+    }
+
+    .road-route-row {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .road-status {
+        width: fit-content;
+    }
+    }
+
+    .official-weather-frame {
+    margin: 24px 0;
+    padding: 18px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.78);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(12px);
+    }
+
+    .vedur-frame-box {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 16px;
+    background: white;
+    padding: 8px;
+    }
+
+    .day-weather-block {
+    margin: 14px 0;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(248, 250, 252, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .alternative-weather {
+    background: rgba(255, 251, 235, 0.82);
+    border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .day-weather-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+    }
+
+    .day-weather-head h4 {
+    margin: 0;
+    }
+
+    .day-weather-head p {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    }
+
+    .place-weather-list {
+    display: grid;
+    gap: 10px;
+    }
+
+    .place-weather-card {
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    overflow: hidden;
+    transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .place-weather-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    border-color: rgba(14, 165, 233, 0.28);
+    }
+
+    .place-weather-card summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    cursor: pointer;
+    padding: 12px 14px;
+    }
+
+    .place-weather-card summary::-webkit-details-marker {
+    display: none;
+    }
+
+    .place-weather-card summary::after {
+    content: "⌄";
+    color: #64748b;
+    transition: transform 0.22s ease;
+    }
+
+    .place-weather-card[open] summary::after {
+    transform: rotate(180deg);
+    }
+
+    .place-weather-main {
+    font-weight: 750;
+    color: #0f172a;
+    }
+
+    .place-weather-mini {
+    color: #475569;
+    font-size: 0.92rem;
+    margin-left: auto;
+    }
+
+    .place-weather-detail {
+    padding: 0 14px 14px;
+    animation: weatherSlideDown 0.22s ease both;
+    }
+
+    @keyframes weatherSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    .weather-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    padding-top: 10px;
+    }
+
+    .weather-metric-grid div {
+    padding: 10px;
+    border-radius: 14px;
+    background: #f8fafc;
+    }
+
+    .weather-metric-grid strong {
+    display: block;
+    font-size: 1rem;
+    color: #0f172a;
+    }
+
+    .weather-metric-grid span {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.82rem;
+    color: #64748b;
+    }
+
+    .weather-fallback-note {
+    margin: 4px 0 8px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 0.86rem;
+    }
+
+    @media (max-width: 640px) {
+    .place-weather-card summary {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .place-weather-mini {
+        margin-left: 0;
+    }
+    }
+
+    .road-group-card {
+    min-width: 0;
+    overflow: hidden;
+    }
+
+    .road-option-list {
+    display: grid;
+    gap: 12px;
+    }
+
+    .road-option-card {
+    min-width: 0;
+    padding: 12px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    }
+
+    .road-option-head {
+    min-width: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    }
+
+    .road-option-head strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    }
+
+    .road-segment-list {
+    display: grid;
+    gap: 8px;
+    }
+
+    .road-segment-row {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 14px;
+    background: #f8fafc;
+    }
+
+    .road-segment-name {
+    min-width: 0;
+    }
+
+    .road-segment-name strong {
+    display: block;
+    }
+
+    .road-segment-name span {
+    display: block;
+    color: #64748b;
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+    }
+
+    .road-status {
+    max-width: 100%;
+    white-space: nowrap;
+    padding: 6px 9px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    }
+
+    .road-segment-row a {
+    white-space: nowrap;
+    font-size: 0.84rem;
+    }
+
+    @media (max-width: 720px) {
+    .road-option-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .road-segment-row {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .road-status {
+        width: fit-content;
+        white-space: normal;
+    }
+    }
+
+    .official-road-iframe {
+    width: 100%;
+    height: 680px;
+    border: 0;
+    border-radius: 18px;
+    background: #f8fafc;
+    }
+
+    /* ===== Extra compact weather ===== */
+
+    #weatherCards {
+    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+    gap: 8px;
+    }
+
+    .day-weather-block {
+    padding: 10px;
+    border-radius: 16px;
+    }
+
+    .day-weather-head {
+    margin-bottom: 6px;
+    }
+
+    .day-weather-head h4 {
+    font-size: 0.92rem;
+    line-height: 1.18;
+    }
+
+    .day-weather-head p {
+    font-size: 0.74rem;
+    }
+
+    .place-weather-list {
+    gap: 6px;
+    }
+
+    .place-weather-card {
+    border-radius: 12px;
+    }
+
+    .place-weather-card summary {
+    padding: 7px 8px;
+    min-height: 36px;
+    grid-template-columns: minmax(0, 1fr) auto 12px;
+    gap: 6px;
+    }
+
+    .place-weather-left {
+    gap: 5px;
+    }
+
+    .place-weather-left strong {
+    font-size: 0.82rem;
+    line-height: 1.12;
+    }
+
+    .weather-icon {
+    font-size: 0.84rem;
+    }
+
+    .place-weather-mini {
+    font-size: 0.76rem;
+    }
+
+    .place-weather-card summary::after {
+    font-size: 0.72rem;
+    }
+
+    .place-weather-detail {
+    padding: 0 8px 8px;
+    }
+
+    .weather-metric-grid {
+    gap: 5px;
+    }
+
+    .weather-metric-grid div {
+    padding: 6px;
+    border-radius: 9px;
+    }
+
+    .weather-metric-grid strong {
+    font-size: 0.78rem;
+    }
+
+    .weather-metric-grid span {
+    font-size: 0.66rem;
+    }
+
+    .weather-metric-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 5px !important;
+    }
+
+    .weather-metric-grid div {
+    min-width: 0;
+    }
+
+    @media (max-width: 360px) {
+    .weather-metric-grid {
+        grid-template-columns: 1fr !important;
+    }
+    }
+
+    /* ===== Ultra compact highland road status ===== */
+
+    #roadCards {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    align-items: start;
+    }
+
+    .road-legend-bar {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 0 4px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    background: rgba(248, 250, 252, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    font-size: 0.76rem;
+    }
+
+    .road-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .road-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #475569;
+    white-space: nowrap;
+    }
+
+    .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    display: inline-block;
+    }
+
+    .road-legend-bar a {
+    color: #0f766e;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+    }
+
+    .road-group-card {
+    padding: 11px;
+    border-radius: 16px;
+    min-width: 0;
+    }
+
+    .road-group-card h4 {
+    font-size: 0.88rem;
+    line-height: 1.18;
+    margin-bottom: 8px;
+    }
+
+    .road-option-list {
+    gap: 7px;
+    }
+
+    .road-option-card {
+    padding: 8px;
+    border-radius: 13px;
+    }
+
+    .compact-road-option-head {
+    margin-bottom: 6px;
+    align-items: center;
+    }
+
+    .road-option-title {
+    font-size: 0.78rem;
+    line-height: 1.12;
+    }
+
+    .road-segment-list {
+    gap: 5px;
+    }
+
+    .compact-road-segment-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px;
+    align-items: center;
+    padding: 6px 7px;
+    border-radius: 10px;
+    }
+
+    .road-segment-main strong {
+    display: inline;
+    font-size: 0.76rem;
+    line-height: 1.05;
+    margin-right: 4px;
+    }
+
+    .road-segment-main span {
+    display: inline;
+    font-size: 0.68rem;
+    line-height: 1.05;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+
+    .road-dot {
+    font-size: 0.82rem;
+    line-height: 1;
+    }
+
+    .road-dot.status-open,
+    .legend-dot.status-open {
+    color: #16a34a;
+    background: #16a34a;
+    }
+
+    .road-dot.status-closed,
+    .legend-dot.status-closed {
+    color: #dc2626;
+    background: #dc2626;
+    }
+
+    .road-dot.status-unknown,
+    .legend-dot.status-unknown {
+    color: #94a3b8;
+    background: #94a3b8;
+    }
+
+    @media (max-width: 900px) {
+    #roadCards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .road-legend-bar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    }
+
+    @media (max-width: 640px) {
+    #roadCards {
+        grid-template-columns: 1fr;
+    }
+
+    #weatherCards {
+        grid-template-columns: 1fr;
+    }
+
+    .road-legend {
+        gap: 7px;
+    }
+    }
+
+    /* ===== Compact sidebar itinerary only ===== */
+
+    .sidebar .timeline {
+    gap: 6px !important;
+    }
+
+    .sidebar .timeline .event {
+    grid-template-columns: 72px 28px minmax(0, 1fr) !important;
+    gap: 7px !important;
+    padding: 6px 8px !important;
+    border-radius: 15px !important;
+    align-items: start !important;
+    }
+
+    .sidebar .timeline .time {
+    font-size: 11px !important;
+    line-height: 1.12 !important;
+    font-weight: 950 !important;
+    }
+
+    .sidebar .timeline .mode {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 11px !important;
+    font-size: 13px !important;
+    }
+
+    .sidebar .timeline .event strong {
+    font-size: 12.2px !important;
+    line-height: 1.16 !important;
+    margin: 0 !important;
+    }
+
+    .sidebar .timeline .event span {
+    font-size: 10.4px !important;
+    line-height: 1.22 !important;
+    margin-top: 1px !important;
+    }
+
+    /* 只隐藏“点击只显示路线 / 点击只显示景点介绍”这颗蓝色胶囊 */
+    .sidebar .timeline .event em {
+    display: none !important;
+    }
+
+    /* 如果某些 event 有额外链接，不要完全隐藏，只缩小 */
+    .sidebar .timeline .eventLinks {
+    margin-top: 3px !important;
+    gap: 4px !important;
+    }
+
+    .sidebar .timeline .eventLinks a {
+    font-size: 9.8px !important;
+    padding: 3px 6px !important;
+    }
+
+    /* ===== Force highland route summary into one line ===== */
+
+    .road-summary-row,
+    .compact-road-segment-row {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    align-items: center !important;
+    gap: 6px !important;
+    min-height: 34px !important;
+    padding: 7px 9px !important;
+    }
+
+    .road-segment-main {
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    }
+
+    .road-segment-main strong {
+    flex: 0 0 auto !important;
+    display: inline !important;
+    font-size: 0.8rem !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    }
+
+    .road-segment-main span {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: block !important;
+    font-size: 0.72rem !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    }
+
+    /* 路线标题也强制一行 */
+    .road-option-head {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    align-items: center !important;
+    gap: 8px !important;
+    }
+
+    .road-option-title {
+    min-width: 0 !important;
+    display: block !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    }
+
+    /* 高地目的地标题也避免换行撑高 */
+    .road-group-card h4 {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    }
+
+    /* ===== Floating quick actions ===== */
+
+    .quickActions {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(16, 24, 39, 0.08);
+    box-shadow: 0 18px 46px rgba(16, 24, 39, 0.16);
+    backdrop-filter: blur(18px);
+    }
+
+    .quickActions button {
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 11px;
+    background: rgba(16, 24, 39, 0.08);
+    color: #101827;
+    font-size: 12px;
+    font-weight: 950;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+
+    .quickActions button:first-child {
+    background: #e0f2fe;
+    color: #075985;
+    }
+
+    .quickActions button:hover {
+    transform: translateY(-1px);
+    background: #101827;
+    color: #fff;
+    }
+
+    @media (max-width: 860px) {
+    .quickActions {
+        left: 50%;
+        right: auto;
+        bottom: 12px;
+        transform: translateX(-50%);
+        max-width: calc(100% - 20px);
+    }
+
+    .quickActions button {
+        padding: 8px 10px;
+        font-size: 11.5px;
+    }
+    }

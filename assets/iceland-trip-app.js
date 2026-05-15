@@ -217,6 +217,76 @@ function renderTabs() {
     .join('');
 }
 
+function parseTripTabDate(tab) {
+  const match = String(tab || '').match(/(\d{1,2})\s*\/\s*(\d{1,2})/);
+  if (!match) return null;
+
+  const month = Number(match[1]);
+  const day = Number(match[2]);
+
+  return new Date(2026, month - 1, day);
+}
+
+function findDayIdByTab(tab) {
+  const item = days.find(day => String(day.tab).trim() === tab);
+  return item ? item.id : null;
+}
+
+function getTodayTripDayId() {
+  const now = new Date();
+
+  const tripStart = new Date(2026, 5, 7);   // 2026-06-07
+  const hardSwitch = new Date(2026, 5, 14); // 2026-06-14
+
+  // 早于 6/7：默认第一天
+  if (now < tripStart) {
+    return 'd1';
+  }
+
+  // 晚于 6/14：默认显示 6/15
+  if (now > hardSwitch) {
+    return findDayIdByTab('6/15') || 'd9';
+  }
+
+  // 6/7 到 6/14：按真实日期匹配 tab
+  const todayTab = `${now.getMonth() + 1}/${now.getDate()}`;
+  return findDayIdByTab(todayTab) || 'd1';
+}
+
+function goTodayMode() {
+  const targetDay = getTodayTripDayId();
+  selectDay(targetDay);
+
+  requestAnimationFrame(() => {
+    const activeTab = document.querySelector('.tab.active, .day-tab.active, [data-day].active');
+    const mainPanel =
+      byId('content') ||
+      byId('timeline') ||
+      document.querySelector('.main') ||
+      document.querySelector('.content');
+
+    if (activeTab) {
+      activeTab.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+
+    if (mainPanel && typeof mainPanel.scrollTo === 'function') {
+      mainPanel.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
 function selectDay(day) {
   currentDay = day;
   renderTabs();
@@ -333,9 +403,10 @@ function eventHTML(day, event, index) {
     )).join('')}</div>`
     : '';
 
-  const action = eventIsTransport(event)
-    ? '点击只显示路线'
-    : (isPopupSpot(event[4]) ? '点击只显示景点介绍' : '点击查看信息');
+  // const action = eventIsTransport(event)
+  //   ? '点击只显示路线'
+  //   : (isPopupSpot(event[4]) ? '点击只显示景点介绍' : '点击查看信息');
+  const action = "";
 
   return (
     `<div class="event" onclick="onEvent('${escapeAttr(day)}',${index})">` +
@@ -467,6 +538,59 @@ function reloadMap() {
   }
 }
 
-renderTabs();
-renderDay(currentDay);
-loadOverview(currentDay);
+function scrollToElementById(id) {
+  const el = byId(id);
+  if (!el) return;
+
+  el.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
+
+function renderQuickActions() {
+  if (byId('quickActions')) return;
+
+  const todayDay = days.find(day => day.id === getTodayTripDayId());
+  const todayLabel = todayDay ? `今日 ${todayDay.tab}` : '今日';
+
+  const bar = document.createElement('div');
+  bar.id = 'quickActions';
+  bar.className = 'quickActions';
+
+  bar.innerHTML = `
+    <button type="button" data-action="today">${todayLabel}</button>
+    <button type="button" data-action="map">地图</button>
+    <button type="button" data-action="weather">天气</button>
+    <button type="button" data-action="road">高地</button>
+  `;
+
+  bar.addEventListener('click', (event) => {
+    const button = event.target.closest('button');
+    if (!button) return;
+
+    const action = button.dataset.action;
+
+    if (action === 'today') {
+      goTodayMode();
+    } else if (action === 'weather') {
+      scrollToElementById('weatherCards');
+    } else if (action === 'road') {
+      scrollToElementById('roadCards');
+    } else if (action === 'map') {
+      scrollToElementById('mapPanel');
+    }
+  });
+
+  document.body.appendChild(bar);
+}
+
+function initApp() {
+  currentDay = getTodayTripDayId();
+  renderTabs();
+  renderDay(currentDay);
+  loadOverview(currentDay);
+  renderQuickActions();
+}
+
+initApp();

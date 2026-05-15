@@ -20,6 +20,45 @@
     <div class="drawer hidden" id="drawer"><button class="close" onclick="closeDrawer()">×</button><div id="drawerGallery"></div><div class="drawerBody"><h3 id="drawerTitle"></h3><p id="drawerText"></p><p id="drawerFee"></p><div class="chips" id="drawerLinks"></div></div></div>
   </section>
 </main>
+<section class="live-panel">
+  <div class="live-header">
+    <div>
+      <h2>实时天气与高地路况</h2>
+      <p id="liveUpdated" class="live-updated">最近更新时间：加载中...</p>
+    </div>
+
+    <button id="refreshLiveDataBtn" class="refresh-live-btn" type="button">
+      刷新数据
+    </button>
+  </div>
+
+  <div id="weatherCards" class="weather-grid"></div>
+
+  <h3>高地路段开放状态</h3>
+  <div id="roadCards" class="road-grid"></div>
+
+  <p class="live-note">
+    注意：本页仅用于快速查看，出发前请以 road.is / trafficinfo.is / vedur.is / SafeTravel 为准。
+  </p>
+</section>
+<section class="official-weather-frame">
+  <div class="section-header">
+    <h3>官方天气图层 · Vedur.is</h3>
+    <p>风、温度、降水官方 iframe，仅作快速查看。</p>
+  </div>
+
+  <div class="vedur-frame-box">
+    <script type="text/javascript" src="https://vedur.is/js/iframe.js"></script>
+    <script type="text/javascript">
+      if (window.VI && VI.ifrm) {
+        VI.ifrm.type = 'wst';
+        VI.ifrm.area = 101;
+        VI.ifrm.lang = 'en';
+        VI.ifrm.displayWeather();
+      }
+    </script>
+  </div>
+</section>
 <footer class="resourceFooter">
   <h2>实用网站与补给建议</h2>
   <p>高地日和长途驾驶前建议每天早晚各查一次道路、天气和安全信息；超市尽量在大城镇提前补齐，东峡湾/西峡湾/高地路段不要假设随时能买到便宜食物。</p>
@@ -50,3 +89,358 @@
 <script src="assets/iceland-trip-app.js"></script>
 </body>
 </html>
+<script>
+async function loadLiveData() {
+  const updatedEl = document.getElementById("liveUpdated");
+  const weatherEl = document.getElementById("weatherCards");
+  const roadEl = document.getElementById("roadCards");
+  const refreshBtn = document.getElementById("refreshLiveDataBtn");
+
+  if (!updatedEl || !weatherEl || !roadEl) return;
+
+  try {
+    if (refreshBtn) {
+      refreshBtn.disabled = true;
+      refreshBtn.textContent = "刷新中...";
+    }
+
+    updatedEl.textContent = "最近更新时间：加载中...";
+
+    const res = await fetch(`assets/live-data.json?v=${Date.now()}`, {
+      cache: "no-store"
+    });
+
+    if (!res.ok) {
+      throw new Error(`HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    const updatedAt = data.updated_at
+      ? new Date(data.updated_at).toLocaleString("zh-CN", {
+          timeZone: "Atlantic/Reykjavik",
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit"
+        })
+      : "未知";
+
+    updatedEl.textContent = `最近更新时间：${updatedAt}（冰岛时间） ·  暂无旅行日天气时，默认显示今日天气`;
+
+    weatherEl.innerHTML = renderDailyWeather(data.daily_weather || []);
+    roadEl.innerHTML = renderRoadGroups(data.road_groups || []);
+
+    function fmtTemp(min, max) {
+      if (min == null && max == null) return "-";
+      if (min == null) return `${Math.round(max)}°C`;
+      if (max == null) return `${Math.round(min)}°C`;
+      return `${Math.round(min)}–${Math.round(max)}°C`;
+    }
+
+    function fmtValue(v, unit) {
+      return v == null ? "-" : `${v}${unit}`;
+    }
+
+    function compactPlaceName(name) {
+      if (!name) return "";
+
+      return String(name)
+        // 去掉中文及中文后的说明
+        .replace(/[\u4e00-\u9fff].*$/g, "")
+        // 去掉一些过长的补充说明
+        .replace(/\s*·.*$/g, "")
+        .replace(/\s*\/.*$/g, "")
+        .replace(/\s*\(.*?\)\s*/g, "")
+        .trim();
+    }
+
+    function shortPlaceName(name, maxLen = 22) {
+      const clean = compactPlaceName(name);
+      if (clean.length <= maxLen) return clean;
+      return clean.slice(0, maxLen - 1) + "…";
+    }
+
+    function fmtTemp(min, max) {
+      if (min == null && max == null) return "-";
+      if (min == null) return `${Math.round(max)}°C`;
+      if (max == null) return `${Math.round(min)}°C`;
+      return `${Math.round(min)}–${Math.round(max)}°C`;
+    }
+
+    function fmtValue(v, unit) {
+      return v == null ? "-" : `${v}${unit}`;
+    }
+
+    function dayWeatherDateLabel(day) {
+      const places = day.places || [];
+      const fallback = places.find(p => p.is_fallback && p.fallback_date);
+      if (fallback) {
+        return `${fallback.fallback_date}`;
+      }
+      return day.date || "";
+    }
+
+    function renderDailyWeather(days) {
+      if (!days || !days.length) {
+        return `
+          <article class="live-card">
+            <h4>暂无天气数据</h4>
+            <p>等待 GitHub Actions 生成最新数据。</p>
+          </article>
+        `;
+      }
+
+      return days.map((day) => {
+        const places = day.places || [];
+
+        const placeCards = places.map((p) => {
+          const name = shortPlaceName(p.name);
+
+          if (p.error) {
+            return `
+              <details class="place-weather-card error-card">
+                <summary>
+                  <span class="place-weather-left">❔ <strong>${name}</strong></span>
+                  <span class="place-weather-mini">暂无</span>
+                </summary>
+                <div class="place-weather-detail">
+                  <p>天气数据获取失败</p>
+                </div>
+              </details>
+            `;
+          }
+
+          return `
+            <details class="place-weather-card">
+              <summary>
+                <span class="place-weather-left">
+                  <span class="weather-icon">${p.icon || "❔"}</span>
+                  <strong>${name}</strong>
+                </span>
+                <span class="place-weather-mini">${fmtTemp(p.temperature_min, p.temperature_max)}</span>
+              </summary>
+
+              <div class="place-weather-detail">
+                <div class="weather-metric-grid">
+                  <div>
+                    <strong>${fmtValue(p.precipitation_sum, " mm")}</strong>
+                    <span>降雨量</span>
+                  </div>
+                  <div>
+                    <strong>${fmtValue(p.precipitation_probability_max, "%")}</strong>
+                    <span>降雨概率</span>
+                  </div>
+                  <div>
+                    <strong>${fmtValue(p.wind_speed_max, " km/h")}</strong>
+                    <span>风速</span>
+                  </div>
+                  <div>
+                    <strong>${fmtValue(p.wind_gusts_max, " km/h")}</strong>
+                    <span>阵风</span>
+                  </div>
+                </div>
+              </div>
+            </details>
+          `;
+        }).join("");
+
+        return `
+          <section class="day-weather-block ${day.isAlternative ? "alternative-weather" : ""}">
+            <div class="day-weather-head">
+              <h4>${day.title || day.date}</h4>
+              <p>${dayWeatherDateLabel(day)}${day.isAlternative ? " · 备选" : ""}</p>
+            </div>
+
+            <div class="place-weather-list">
+              ${placeCards}
+            </div>
+          </section>
+        `;
+      }).join("");
+    }
+
+    function statusClass(open) {
+      if (open === true) return "status-open";
+      if (open === false) return "status-closed";
+      return "status-unknown";
+    }
+
+    function compactRoadLabel(text, maxLen = 32) {
+      if (!text) return "";
+      const clean = String(text).replace(/\s+/g, " ").trim();
+      if (clean.length <= maxLen) return clean;
+      return clean.slice(0, maxLen - 1) + "…";
+    }
+
+    function extractRoadEndpoints(label) {
+      if (!label) return { start: "", end: "" };
+
+      let text = String(label).trim();
+
+      // 去掉前缀，例如 "Landvegur: Hringvegur - Laugaland"
+      if (text.includes(":")) {
+        text = text.split(":").slice(1).join(":").trim();
+      }
+
+      // 统一不同横线
+      text = text.replace(/–/g, "-").replace(/—/g, "-");
+
+      const parts = text.split("-").map(x => x.trim()).filter(Boolean);
+
+      if (parts.length >= 2) {
+        return {
+          start: parts[0],
+          end: parts[parts.length - 1]
+        };
+      }
+
+      return {
+        start: text,
+        end: ""
+      };
+    }
+
+    function summarizeSegmentsByRoad(segments) {
+      const groups = new Map();
+
+      for (const seg of segments || []) {
+        const road = String(seg.road || "Road").trim();
+
+        if (!groups.has(road)) {
+          groups.set(road, {
+            road,
+            labels: [],
+            opens: [],
+            statuses: [],
+            segments: []
+          });
+        }
+
+        const item = groups.get(road);
+        item.labels.push(seg.label || "");
+        item.opens.push(seg.open);
+        item.statuses.push(seg.status || "Unknown");
+        item.segments.push(seg);
+      }
+
+      return Array.from(groups.values()).map(item => {
+        const first = extractRoadEndpoints(item.labels[0]);
+        const last = extractRoadEndpoints(item.labels[item.labels.length - 1]);
+
+        let open = null;
+        if (item.opens.some(v => v === false)) {
+          open = false;
+        } else if (item.opens.length && item.opens.every(v => v === true)) {
+          open = true;
+        }
+
+        let label = "";
+        if (first.start && last.end) {
+          label = `${first.start} → ${last.end}`;
+        } else if (first.start) {
+          label = first.start;
+        } else {
+          label = item.labels[0] || "";
+        }
+
+        return {
+          road: item.road,
+          label,
+          open,
+          segmentCount: item.segments.length,
+          detail: item.segments
+            .map(s => `${s.road} ${s.label || ""}: ${s.status || "Unknown"}`)
+            .join("\n")
+        };
+      });
+    }
+
+    function renderRoadGroups(groups) {
+      if (!groups || !groups.length) {
+        return `
+          <article class="live-card">
+            <h4>暂无路况数据</h4>
+            <p>等待 GitHub Actions 生成最新数据。</p>
+          </article>
+        `;
+      }
+
+      const cards = groups.map(group => `
+        <article class="road-group-card">
+          <h4>${group.destination}</h4>
+
+          <div class="road-option-list">
+            ${(group.route_options || []).map(option => {
+              const summaryRows = summarizeSegmentsByRoad(option.segments || []);
+
+              return `
+                <section class="road-option-card">
+                  <div class="road-option-head compact-road-option-head">
+                    <span class="road-option-title">${compactRoadLabel(option.name, 26)}</span>
+                    <span class="road-dot ${statusClass(option.overall_open)}" title="${option.overall_status || "Unknown"}">●</span>
+                  </div>
+
+                  <div class="road-segment-list road-summary-list">
+                    ${summaryRows.map(row => `
+                      <div class="road-segment-row compact-road-segment-row road-summary-row" title="${row.detail}">
+                        <span class="road-dot ${statusClass(row.open)}">●</span>
+
+                        <div class="road-segment-main">
+                          <strong>${row.road}</strong>
+                          <span>${compactRoadLabel(row.label, 34)}</span>
+                        </div>
+                      </div>
+                    `).join("")}
+                  </div>
+                </section>
+              `;
+            }).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      return `
+        <div class="road-legend-bar">
+          <div class="road-legend">
+            <span><i class="legend-dot status-open"></i>开放</span>
+            <span><i class="legend-dot status-closed"></i>关闭/部分关闭</span>
+            <span><i class="legend-dot status-unknown"></i>未知/需确认</span>
+          </div>
+          <a href="https://umferdin.is/en" target="_blank" rel="noopener">
+            查看官方路况
+          </a>
+        </div>
+
+        ${cards}
+      `;
+    }
+
+  } catch (err) {
+    console.error(err);
+    updatedEl.textContent = "最近更新时间：数据加载失败";
+
+    weatherEl.innerHTML = `
+      <article class="live-card">
+        <h4>数据加载失败</h4>
+        <p>请稍后重试，或检查 assets/live-data.json 是否存在。</p>
+      </article>
+    `;
+  } finally {
+    if (refreshBtn) {
+      refreshBtn.disabled = false;
+      refreshBtn.textContent = "刷新数据";
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadLiveData();
+
+  const refreshBtn = document.getElementById("refreshLiveDataBtn");
+  if (refreshBtn) {
+    refreshBtn.addEventListener("click", loadLiveData);
+  }
+});
+</script>
