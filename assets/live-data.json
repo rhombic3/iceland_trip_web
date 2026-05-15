@@ -1,693 +1,246 @@
 {
-  "updated_at": "2026-05-14T23:48:32+00:00",
+  "updated_at": "2026-05-15T00:26:22+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
-  "daily_weather": [
-    {
-      "date": "2026-06-07",
-      "title": "Day 1 · Reykjavík & Golden Circle",
-      "places": [
-        {
-          "name": "Reykjavík",
-          "date": "2026-06-07",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Þingvellir",
-          "date": "2026-06-07",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Brúarfoss",
-          "date": "2026-06-07",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Geysir",
-          "date": "2026-06-07",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Gullfoss",
-          "date": "2026-06-07",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-08",
-      "title": "Day 2 · South Coast",
-      "places": [
-        {
-          "name": "Seljalandsfoss",
-          "date": "2026-06-08",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Skógafoss",
-          "date": "2026-06-08",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Reynisfjara",
-          "date": "2026-06-08",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Vík",
-          "date": "2026-06-08",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-09",
-      "title": "Day 3 · Skaftafell & Glacier Lagoon",
-      "places": [
-        {
-          "name": "Fjaðrárgljúfur",
-          "date": "2026-06-09",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Skaftafell",
-          "date": "2026-06-09",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Jökulsárlón",
-          "date": "2026-06-09",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Diamond Beach",
-          "date": "2026-06-09",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-10",
-      "title": "Day 4 · East Iceland",
-      "places": [
-        {
-          "name": "Höfn",
-          "date": "2026-06-10",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Stokksnes",
-          "date": "2026-06-10",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Djúpivogur",
-          "date": "2026-06-10",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Egilsstaðir",
-          "date": "2026-06-10",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-11",
-      "title": "Day 5 · North / Mývatn area",
-      "places": [
-        {
-          "name": "Stuðlagil Canyon",
-          "date": "2026-06-11",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Dettifoss",
-          "date": "2026-06-11",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Mývatn",
-          "date": "2026-06-11",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Akureyri",
-          "date": "2026-06-11",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-12",
-      "title": "Day 6 · North to West",
-      "places": [
-        {
-          "name": "Goðafoss",
-          "date": "2026-06-12",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Akureyri",
-          "date": "2026-06-12",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Hvítserkur",
-          "date": "2026-06-12",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Snæfellsnes",
-          "date": "2026-06-12",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-13",
-      "title": "Day 7 · Landmannalaugar",
-      "places": [
-        {
-          "name": "Háifoss",
-          "date": "2026-06-13",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Sigöldugljúfur",
-          "date": "2026-06-13",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Landmannalaugar",
-          "date": "2026-06-13",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-14",
-      "title": "Day 8 · Þórsmörk",
-      "places": [
-        {
-          "name": "Þórsmörk",
-          "date": "2026-06-14",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Stakkholtsgjá",
-          "date": "2026-06-14",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-15",
-      "title": "Day 9 · Kerlingarfjöll",
-      "places": [
-        {
-          "name": "Kerlingarfjöll",
-          "date": "2026-06-15",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Hveradalir",
-          "date": "2026-06-15",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-16",
-      "title": "Day 10 · Þakgil / Vík area",
-      "places": [
-        {
-          "name": "Þakgil",
-          "date": "2026-06-16",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Vík",
-          "date": "2026-06-16",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    },
-    {
-      "date": "2026-06-17",
-      "title": "Day 11 · Mælifell / return",
-      "places": [
-        {
-          "name": "Mælifell",
-          "date": "2026-06-17",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Vík",
-          "date": "2026-06-17",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        },
-        {
-          "name": "Keflavík Airport",
-          "date": "2026-06-17",
-          "error": "HTTP Error 400: Bad Request",
-          "summary": "暂无预报",
-          "icon": "❔"
-        }
-      ]
-    }
-  ],
+  "daily_weather": [],
   "road_groups": [
     {
+      "destination": "Landmannalaugar",
+      "route_options": [
+        {
+          "name": "F26 + F208 North",
+          "segments": [
+            {
+              "road": "F26",
+              "label": "Hringvegur → Vatnsfellsvirkjun",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "F208",
+              "label": "Vatnsfellsvirkjun → Landmannalaugar",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
+            }
+          ],
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
+        },
+        {
+          "name": "F225 Landmannaleið",
+          "segments": [
+            {
+              "road": "F225",
+              "label": "Landmannaleið",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
+            }
+          ],
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
+        },
+        {
+          "name": "F208 South",
+          "segments": [
+            {
+              "road": "F208",
+              "label": "F208 South / Eldgjá side",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
+            }
+          ],
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
+        }
+      ]
+    },
+    {
       "destination": "Mælifell / 抹茶山",
-      "routes": [
+      "route_options": [
         {
-          "road": "F232",
-          "label": "Vík → F232 → F210",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Impassable",
-          "matched_count": 1,
-          "matched_sections": [
+          "name": "Vík → F232 → F210",
+          "segments": [
             {
-              "name": "Öldufellsleið",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
+              "road": "F232",
+              "label": "F232 Öldufellsleið",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "F210",
+              "label": "F210 near Mælifell",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             }
           ],
-          "official_url": "https://umferdin.is/en"
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
         },
         {
-          "road": "F210",
-          "label": "F210 Fjallabaksleið syðri",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Closed / Impassable / Not known",
-          "matched_count": 6,
-          "matched_sections": [
+          "name": "F210 direct",
+          "segments": [
             {
-              "name": "Fjallabaksleið syðri: Emstruleið - Rangárvallavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið syðri: Snæbýli - Emstruleið",
-              "condition": "LOKAD",
-              "condition_en": "Closed",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Mælifellsdalsvegur: Efribyggðarvegur - Vesturheiðarvegur",
-              "condition": "LOKAD",
-              "condition_en": "Closed",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Vesturheiðarvegur: Fossar - Mælifellsdalsvegur",
-              "condition": "EKKI_I_THJONUSTU",
-              "condition_en": "Not known",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Vesturheiðarvegur: Mælifellsdalsvegur - Kjalvegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Mælifellsdalsvegur: Vesturheiðarvegur - Kjalvegur",
-              "condition": "EKKI_I_THJONUSTU",
-              "condition_en": "Not known",
-              "registered_at": "2026-05-14T02:55:01Z"
+              "road": "F210",
+              "label": "F210 Fjallabaksleið syðri",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             }
           ],
-          "official_url": "https://umferdin.is/en"
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
         },
         {
-          "road": "F233",
-          "label": "F233/F210 alternative",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Impassable",
-          "matched_count": 1,
-          "matched_sections": [
+          "name": "F233 / F210 alternative",
+          "segments": [
             {
-              "name": "Álftavatnskrókur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
+              "road": "F233",
+              "label": "F233 Álftavatnskrókur",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
+            },
+            {
+              "road": "F210",
+              "label": "F210 connection",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             }
           ],
-          "official_url": "https://umferdin.is/en"
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
         }
       ]
     },
     {
       "destination": "Þórsmörk",
-      "routes": [
+      "route_options": [
         {
-          "road": "F249",
-          "label": "F249 Þórsmerkurvegur",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Easily passable / Impassable",
-          "matched_count": 6,
-          "matched_sections": [
+          "name": "F249",
+          "segments": [
             {
-              "name": "Þórsmerkurvegur: Seljalandsfoss - Merkurvegur",
-              "condition": "GREIDFAERT",
-              "condition_en": "Easily passable",
-              "registered_at": "2026-05-14T02:55:00Z"
-            },
-            {
-              "name": "Þórsmerkurvegur: Nauthúsagil - Jökultungur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Þórsmerkurvegur: Jökultungur - Básar",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Þórsmerkurvegur að Seljalandsfossi",
-              "condition": "GREIDFAERT",
-              "condition_en": "Easily passable",
-              "registered_at": "2026-05-14T02:55:00Z"
-            },
-            {
-              "name": "Þórsmerkurvegur: Merkurvegur - Stóra-Mörk",
-              "condition": "GREIDFAERT",
-              "condition_en": "Easily passable",
-              "registered_at": "2026-05-14T02:55:00Z"
-            },
-            {
-              "name": "Þórsmerkurvegur: Stóra-Mörk - Nauthúsagil",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:00Z"
+              "road": "F249",
+              "label": "F249 Þórsmerkurvegur",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             }
           ],
-          "official_url": "https://umferdin.is/en"
-        }
-      ]
-    },
-    {
-      "destination": "Landmannalaugar",
-      "routes": [
-        {
-          "road": "F26 + F208 North",
-          "label": "F26 small part + F208 north access",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Closed / Impassable",
-          "matched_count": 5,
-          "matched_sections": [
-            {
-              "name": "Fjallabaksleið nyrðri: Búland - Eldgjá",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið nyrðri: Eldgjá - Landmannalaugavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið nyrðri - Langisjór",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Skagafjarðarleið: Laugafell - Sprengisandsleið",
-              "condition": "OFAERT_ANNAD",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið nyrðri: Sigalda - Landmannalaugar",
-              "condition": "LOKAD",
-              "condition_en": "Closed",
-              "registered_at": "2026-05-14T02:55:01Z"
-            }
-          ],
-          "official_url": "https://umferdin.is/en"
-        },
-        {
-          "road": "F208 South",
-          "label": "F208 south",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Closed / Impassable",
-          "matched_count": 4,
-          "matched_sections": [
-            {
-              "name": "Fjallabaksleið nyrðri: Búland - Eldgjá",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið syðri: Emstruleið - Rangárvallavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið nyrðri: Eldgjá - Landmannalaugavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Fjallabaksleið syðri: Snæbýli - Emstruleið",
-              "condition": "LOKAD",
-              "condition_en": "Closed",
-              "registered_at": "2026-05-14T02:55:01Z"
-            }
-          ],
-          "official_url": "https://umferdin.is/en"
-        },
-        {
-          "road": "F225",
-          "label": "F225 Landmannaleið",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Impassable",
-          "matched_count": 3,
-          "matched_sections": [
-            {
-              "name": "Landmannaleið vestan Heklu",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Landmannaleið: Landmannahellir - Fjallabak N",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Landmannaleið: Hekla - Landmannahellir",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            }
-          ],
-          "official_url": "https://umferdin.is/en"
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
         }
       ]
     },
     {
       "destination": "Kerlingarfjöll",
-      "routes": [
+      "route_options": [
         {
-          "road": "35",
-          "label": "Road 35 / Kjölur",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Closed / Impassable / Not known",
-          "matched_count": 9,
-          "matched_sections": [
+          "name": "35 + F347",
+          "segments": [
             {
-              "name": "Kjalvegur : Svínvetningabraut - Blönduvirkjun",
-              "condition": "OTHEKKT",
-              "condition_en": "Not known",
-              "registered_at": "2026-05-14T02:55:00Z"
+              "road": "35",
+              "label": "Road 35 / Kjölur",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             },
             {
-              "name": "Kjalvegur: Gullfoss - Hagavatnsvegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Kjalvegur: Bláfellsháls - Kerlingarfjallavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Kjalvegur: Hagavatnsvegur - Bláfellsháls",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Skjaldbreiðarvegur: Kjalvegur - Hlöðuvallavegur",
-              "condition": "LOKAD",
-              "condition_en": "Closed",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Kjalvegur: Þjófadalavegur - Blönduvirkjun",
-              "condition": "LOKAD",
-              "condition_en": "Closed",
-              "registered_at": "2026-05-14T02:55:01Z"
+              "road": "F347",
+              "label": "F347 Kerlingarfjallavegur",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             }
           ],
-          "official_url": "https://umferdin.is/en"
-        },
-        {
-          "road": "F347",
-          "label": "F347 Kerlingarfjallavegur",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Impassable",
-          "matched_count": 3,
-          "matched_sections": [
-            {
-              "name": "Kjalvegur: Bláfellsháls - Kerlingarfjallavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Kerlingarfjallavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            },
-            {
-              "name": "Kjalvegur: Kerlingarfjallavegur - Þjófadalavegur",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
-            }
-          ],
-          "official_url": "https://umferdin.is/en"
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
         }
       ]
     },
     {
       "destination": "Þakgil",
-      "routes": [
+      "route_options": [
         {
-          "road": "214",
-          "label": "Road 214 to Þakgil",
-          "status": "Closed",
-          "open": false,
-          "icon": "⛔",
-          "detail": "Impassable",
-          "matched_count": 1,
-          "matched_sections": [
+          "name": "Road 214",
+          "segments": [
             {
-              "name": "Kerlingardalsvegur: Þakgil",
-              "condition": "OFAERT_VEDUR",
-              "condition_en": "Impassable",
-              "registered_at": "2026-05-14T02:55:01Z"
+              "road": "214",
+              "label": "Road 214 to Þakgil",
+              "status": "Unknown",
+              "open": null,
+              "icon": "❔",
+              "detail": "No matching official road section found.",
+              "matched_count": 0,
+              "matched_sections": [],
+              "official_url": "https://umferdin.is/en"
             }
           ],
-          "official_url": "https://umferdin.is/en"
+          "overall_status": "Unknown / Check official",
+          "overall_open": null,
+          "overall_icon": "❔"
         }
       ]
     }

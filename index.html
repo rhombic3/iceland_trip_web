@@ -43,11 +43,21 @@
 </section>
 <section class="official-weather-frame">
   <div class="section-header">
-    <h3>官方天气预报 · Vedur.is</h3>
-    <p>官方站点预报 / 文字预报 / 观测信息。</p>
+    <h3>官方天气图层 · Vedur.is</h3>
+    <p>风、温度、降水官方 iframe，仅作快速查看。</p>
   </div>
 
-  <div id="vedurOfficialFrame" class="vedur-frame-box"></div>
+  <div class="vedur-frame-box">
+    <script type="text/javascript" src="https://vedur.is/js/iframe.js"></script>
+    <script type="text/javascript">
+      if (window.VI && VI.ifrm) {
+        VI.ifrm.type = 'wst';
+        VI.ifrm.area = 101;
+        VI.ifrm.lang = 'en';
+        VI.ifrm.displayWeather();
+      }
+    </script>
+  </div>
 </section>
 <iframe
   src="https://umferdin.is/en"
@@ -301,21 +311,4 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshBtn.addEventListener("click", loadLiveData);
   }
 });
-
-(function loadVedurIframe() {
-  const box = document.getElementById("vedurOfficialFrame");
-  if (!box) return;
-
-  const script = document.createElement("script");
-  script.src = "https://vedur.is/js/iframe.js";
-  script.onload = function () {
-    if (window.VI && VI.ifrm) {
-      VI.ifrm.type = "wst";
-      VI.ifrm.area = 101;
-      VI.ifrm.lang = "en";
-      VI.ifrm.displayWeather();
-    }
-  };
-  box.appendChild(script);
-})();
 </script>
