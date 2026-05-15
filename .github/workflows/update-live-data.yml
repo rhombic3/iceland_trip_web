@@ -3,7 +3,13 @@ name: Update live Iceland travel data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/10 * * * *"
+    # Before the trip: once per day, Jan 1 - Jun 6.
+    # GitHub Actions cron uses UTC; Iceland is UTC+0.
+    - cron: "0 8 * 1-5 *"
+    - cron: "0 8 1-6 6 *"
+
+    # During the trip: every 15 minutes, Jun 7 - Jun 17.
+    - cron: "*/15 * 7-17 6 *"
 
 permissions:
   contents: write
