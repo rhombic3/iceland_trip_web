@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T00:50:18+00:00",
+  "updated_at": "2026-05-15T01:01:55+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -1026,7 +1026,7 @@
       "id": "alt_mael",
       "date": "2026-05-15",
       "tab": "抹茶山",
-      "title": "Mælifell 抹茶山",
+      "title": "Mælifell 抹茶山路线开放时",
       "isAlternative": false,
       "places": [
         {
@@ -1051,7 +1051,7 @@
       "id": "alt_westman",
       "date": "2026-05-15",
       "tab": "西人岛",
-      "title": "西人岛",
+      "title": "备选方案一 · 西人岛",
       "isAlternative": false,
       "places": [
         {
@@ -1092,7 +1092,7 @@
       "id": "alt_thakgil",
       "date": "2026-05-15",
       "tab": "Þakgil",
-      "title": "Þakgil 徒步",
+      "title": "备选方案二 · Þakgil 徒步",
       "isAlternative": false,
       "places": [
         {
@@ -1149,7 +1149,7 @@
       "id": "alt_laki",
       "date": "2026-05-15",
       "tab": "Laki",
-      "title": "Laki 火山",
+      "title": "备选方案三 · Laki 火山",
       "isAlternative": false,
       "places": [
         {
