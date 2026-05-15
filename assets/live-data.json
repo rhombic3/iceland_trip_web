@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T02:21:12+00:00",
+  "updated_at": "2026-05-15T02:33:42+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -1192,7 +1192,7 @@
       "destination": "Landmannalaugar",
       "route_options": [
         {
-          "name": "F26 + F208 North",
+          "name": "F26 + F208 North 最简单",
           "segments": [
             {
               "road": "26",
@@ -1468,7 +1468,7 @@
           "overall_icon": "⛔"
         },
         {
-          "name": "F208 South",
+          "name": "F208 South 风景最好",
           "segments": [
             {
               "road": "208",
@@ -1561,7 +1561,7 @@
       "destination": "Mælifell / 抹茶山",
       "route_options": [
         {
-          "name": "F232 + F210",
+          "name": "F232 + F210 最简单",
           "segments": [
             {
               "road": "232",
@@ -1609,7 +1609,7 @@
           "overall_icon": "⛔"
         },
         {
-          "name": "F210 West",
+          "name": "F210 West 风景最好",
           "segments": [
             {
               "road": "210",
@@ -1710,7 +1710,7 @@
       "destination": "Þórsmörk",
       "route_options": [
         {
-          "name": "F249",
+          "name": "F249 危险，看好天气",
           "segments": [
             {
               "road": "249",
