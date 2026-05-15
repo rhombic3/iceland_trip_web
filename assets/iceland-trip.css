@@ -754,3 +754,58 @@
         gap: 7px;
     }
     }
+    
+    /* ===== Compact sidebar itinerary only ===== */
+
+    .sidebar .timeline {
+    gap: 6px !important;
+    }
+
+    .sidebar .timeline .event {
+    grid-template-columns: 72px 28px minmax(0, 1fr) !important;
+    gap: 7px !important;
+    padding: 6px 8px !important;
+    border-radius: 15px !important;
+    align-items: start !important;
+    }
+
+    .sidebar .timeline .time {
+    font-size: 11px !important;
+    line-height: 1.12 !important;
+    font-weight: 950 !important;
+    }
+
+    .sidebar .timeline .mode {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 11px !important;
+    font-size: 13px !important;
+    }
+
+    .sidebar .timeline .event strong {
+    font-size: 12.2px !important;
+    line-height: 1.16 !important;
+    margin: 0 !important;
+    }
+
+    .sidebar .timeline .event span {
+    font-size: 10.4px !important;
+    line-height: 1.22 !important;
+    margin-top: 1px !important;
+    }
+
+    /* 只隐藏“点击只显示路线 / 点击只显示景点介绍”这颗蓝色胶囊 */
+    .sidebar .timeline .event em {
+    display: none !important;
+    }
+
+    /* 如果某些 event 有额外链接，不要完全隐藏，只缩小 */
+    .sidebar .timeline .eventLinks {
+    margin-top: 3px !important;
+    gap: 4px !important;
+    }
+
+    .sidebar .timeline .eventLinks a {
+    font-size: 9.8px !important;
+    padding: 3px 6px !important;
+    }
