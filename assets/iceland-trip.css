@@ -246,3 +246,252 @@
     background: white;
     padding: 8px;
     }
+
+    .day-weather-block {
+    margin: 14px 0;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(248, 250, 252, 0.88);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .alternative-weather {
+    background: rgba(255, 251, 235, 0.82);
+    border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .day-weather-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+    }
+
+    .day-weather-head h4 {
+    margin: 0;
+    }
+
+    .day-weather-head p {
+    margin: 4px 0 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    }
+
+    .place-weather-list {
+    display: grid;
+    gap: 10px;
+    }
+
+    .place-weather-card {
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    overflow: hidden;
+    transition: box-shadow 0.22s ease, transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .place-weather-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    border-color: rgba(14, 165, 233, 0.28);
+    }
+
+    .place-weather-card summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    cursor: pointer;
+    padding: 12px 14px;
+    }
+
+    .place-weather-card summary::-webkit-details-marker {
+    display: none;
+    }
+
+    .place-weather-card summary::after {
+    content: "⌄";
+    color: #64748b;
+    transition: transform 0.22s ease;
+    }
+
+    .place-weather-card[open] summary::after {
+    transform: rotate(180deg);
+    }
+
+    .place-weather-main {
+    font-weight: 750;
+    color: #0f172a;
+    }
+
+    .place-weather-mini {
+    color: #475569;
+    font-size: 0.92rem;
+    margin-left: auto;
+    }
+
+    .place-weather-detail {
+    padding: 0 14px 14px;
+    animation: weatherSlideDown 0.22s ease both;
+    }
+
+    @keyframes weatherSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    .weather-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    padding-top: 10px;
+    }
+
+    .weather-metric-grid div {
+    padding: 10px;
+    border-radius: 14px;
+    background: #f8fafc;
+    }
+
+    .weather-metric-grid strong {
+    display: block;
+    font-size: 1rem;
+    color: #0f172a;
+    }
+
+    .weather-metric-grid span {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.82rem;
+    color: #64748b;
+    }
+
+    .weather-fallback-note {
+    margin: 4px 0 8px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    background: #fffbeb;
+    color: #92400e;
+    font-size: 0.86rem;
+    }
+
+    @media (max-width: 640px) {
+    .place-weather-card summary {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .place-weather-mini {
+        margin-left: 0;
+    }
+    }
+
+    .road-group-card {
+    min-width: 0;
+    overflow: hidden;
+    }
+
+    .road-option-list {
+    display: grid;
+    gap: 12px;
+    }
+
+    .road-option-card {
+    min-width: 0;
+    padding: 12px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    }
+
+    .road-option-head {
+    min-width: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    }
+
+    .road-option-head strong {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    }
+
+    .road-segment-list {
+    display: grid;
+    gap: 8px;
+    }
+
+    .road-segment-row {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    border-radius: 14px;
+    background: #f8fafc;
+    }
+
+    .road-segment-name {
+    min-width: 0;
+    }
+
+    .road-segment-name strong {
+    display: block;
+    }
+
+    .road-segment-name span {
+    display: block;
+    color: #64748b;
+    font-size: 0.82rem;
+    overflow-wrap: anywhere;
+    }
+
+    .road-status {
+    max-width: 100%;
+    white-space: nowrap;
+    padding: 6px 9px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.82rem;
+    }
+
+    .road-segment-row a {
+    white-space: nowrap;
+    font-size: 0.84rem;
+    }
+
+    @media (max-width: 720px) {
+    .road-option-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .road-segment-row {
+        grid-template-columns: 1fr;
+        align-items: start;
+    }
+
+    .road-status {
+        width: fit-content;
+        white-space: normal;
+    }
+    }
+
+    .official-road-iframe {
+    width: 100%;
+    height: 680px;
+    border: 0;
+    border-radius: 18px;
+    background: #f8fafc;
+    }

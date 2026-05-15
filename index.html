@@ -43,22 +43,18 @@
 </section>
 <section class="official-weather-frame">
   <div class="section-header">
-    <h3>官方天气图层 · Vedur.is</h3>
-    <p>风、温度、降水官方 iframe，仅作快速查看。</p>
+    <h3>官方天气预报 · Vedur.is</h3>
+    <p>官方站点预报 / 文字预报 / 观测信息。</p>
   </div>
 
-  <div class="vedur-frame-box">
-    <script type="text/javascript" src="https://vedur.is/js/iframe.js"></script>
-    <script type="text/javascript">
-      if (window.VI && VI.ifrm) {
-        VI.ifrm.type = 'wel';
-        VI.ifrm.area = 101;
-        VI.ifrm.lang = 'en';
-        VI.ifrm.displayWeather();
-      }
-    </script>
-  </div>
+  <div id="vedurOfficialFrame" class="vedur-frame-box"></div>
 </section>
+<iframe
+  src="https://umferdin.is/en"
+  class="official-road-iframe"
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 <footer class="resourceFooter">
   <h2>实用网站与补给建议</h2>
   <p>高地日和长途驾驶前建议每天早晚各查一次道路、天气和安全信息；超市尽量在大城镇提前补齐，东峡湾/西峡湾/高地路段不要假设随时能买到便宜食物。</p>
@@ -153,49 +149,73 @@ async function loadLiveData() {
         `;
       }
 
-      return days.map((day, index) => {
+      return days.map((day) => {
         const places = day.places || [];
 
-        const summary = places.map(p => {
+        const placeCards = places.map((p, idx) => {
+          const fallback = p.is_fallback
+            ? `<div class="weather-fallback-note">${p.fallback_note || "目标日期暂无预报，显示今日天气。"}</div>`
+            : "";
+
           if (p.error) {
-            return `<span class="weather-chip error-chip">❔ ${p.name} 暂无预报</span>`;
+            return `
+              <details class="place-weather-card error-card">
+                <summary>
+                  <span class="place-weather-main">❔ ${p.name}</span>
+                  <span class="place-weather-mini">暂无预报</span>
+                </summary>
+                <div class="place-weather-detail">
+                  <p>天气数据获取失败：${p.error}</p>
+                </div>
+              </details>
+            `;
           }
 
           return `
-            <span class="weather-chip">
-              ${p.icon || "❔"} ${p.name} · ${p.summary || "未知"} · ${fmtTemp(p.temperature_min, p.temperature_max)}
-            </span>
+            <details class="place-weather-card">
+              <summary>
+                <span class="place-weather-main">${p.icon || "❔"} ${p.name}</span>
+                <span class="place-weather-mini">${p.summary || "未知"} · ${fmtTemp(p.temperature_min, p.temperature_max)}</span>
+              </summary>
+
+              <div class="place-weather-detail">
+                ${fallback}
+                <div class="weather-metric-grid">
+                  <div>
+                    <strong>${fmtValue(p.precipitation_sum, " mm")}</strong>
+                    <span>预计降雨量</span>
+                  </div>
+                  <div>
+                    <strong>${fmtValue(p.precipitation_probability_max, "%")}</strong>
+                    <span>最大降雨概率</span>
+                  </div>
+                  <div>
+                    <strong>${fmtValue(p.wind_speed_max, " km/h")}</strong>
+                    <span>最大风速</span>
+                  </div>
+                  <div>
+                    <strong>${fmtValue(p.wind_gusts_max, " km/h")}</strong>
+                    <span>最大阵风</span>
+                  </div>
+                </div>
+              </div>
+            </details>
           `;
         }).join("");
 
-        const details = places.map(p => `
-          <div class="weather-detail-row">
-            <div>
-              <strong>${p.icon || "❔"} ${p.name}</strong>
-              <div class="muted">${p.summary || "未知"} · ${fmtTemp(p.temperature_min, p.temperature_max)}</div>
-            </div>
-            <div class="weather-detail-grid">
-              <span>降雨量：${fmtValue(p.precipitation_sum, " mm")}</span>
-              <span>降雨概率：${fmtValue(p.precipitation_probability_max, "%")}</span>
-              <span>最大风速：${fmtValue(p.wind_speed_max, " km/h")}</span>
-              <span>最大阵风：${fmtValue(p.wind_gusts_max, " km/h")}</span>
-            </div>
-          </div>
-        `).join("");
-
         return `
-          <details class="day-weather-card" ${index === 0 ? "open" : ""}>
-            <summary>
+          <section class="day-weather-block ${day.isAlternative ? "alternative-weather" : ""}">
+            <div class="day-weather-head">
               <div>
-                <strong>${day.title || day.date}</strong>
-                <span class="muted">${day.date || ""}</span>
+                <h4>${day.title || day.date}</h4>
+                <p>${day.date || ""}${day.isAlternative ? " · 备选" : ""}</p>
               </div>
-              <div class="weather-chip-row">${summary}</div>
-            </summary>
-            <div class="weather-details">
-              ${details}
             </div>
-          </details>
+
+            <div class="place-weather-list">
+              ${placeCards}
+            </div>
+          </section>
         `;
       }).join("");
     }
@@ -219,19 +239,35 @@ async function loadLiveData() {
       return groups.map(group => `
         <article class="road-group-card">
           <h4>${group.destination}</h4>
-          <div class="road-route-list">
-            ${(group.routes || []).map(route => `
-              <div class="road-route-row">
-                <div>
-                  <strong>${route.road}</strong>
-                  <div class="muted">${route.label || ""}</div>
+
+          <div class="road-option-list">
+            ${(group.route_options || []).map(option => `
+              <div class="road-option-card">
+                <div class="road-option-head">
+                  <strong>${option.name}</strong>
+                  <span class="road-status ${statusClass(option.overall_open)}">
+                    ${option.overall_icon || "❔"} ${option.overall_status || "Unknown"}
+                  </span>
                 </div>
-                <div class="road-status ${statusClass(route.open)}">
-                  ${route.icon || "❔"} ${route.status || "Unknown"}
+
+                <div class="road-segment-list">
+                  ${(option.segments || []).map(seg => `
+                    <div class="road-segment-row">
+                      <div class="road-segment-name">
+                        <strong>${seg.road}</strong>
+                        <span>${seg.label || ""}</span>
+                      </div>
+
+                      <span class="road-status ${statusClass(seg.open)}">
+                        ${seg.icon || "❔"} ${seg.status || "Unknown"}
+                      </span>
+
+                      <a href="${seg.official_url || "https://umferdin.is/en"}" target="_blank" rel="noopener">
+                        官方
+                      </a>
+                    </div>
+                  `).join("")}
                 </div>
-                <a href="${route.official_url || "https://umferdin.is/en"}" target="_blank" rel="noopener">
-                  官方
-                </a>
               </div>
             `).join("")}
           </div>
@@ -265,4 +301,21 @@ document.addEventListener("DOMContentLoaded", () => {
     refreshBtn.addEventListener("click", loadLiveData);
   }
 });
+
+(function loadVedurIframe() {
+  const box = document.getElementById("vedurOfficialFrame");
+  if (!box) return;
+
+  const script = document.createElement("script");
+  script.src = "https://vedur.is/js/iframe.js";
+  script.onload = function () {
+    if (window.VI && VI.ifrm) {
+      VI.ifrm.type = "wst";
+      VI.ifrm.area = 101;
+      VI.ifrm.lang = "en";
+      VI.ifrm.displayWeather();
+    }
+  };
+  box.appendChild(script);
+})();
 </script>

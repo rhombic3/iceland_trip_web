@@ -10,189 +10,209 @@ OUT = Path("assets/live-data.json")
 OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
 ROAD_STATUS_URL = "https://gagnaveita.vegagerdin.is/api/faerd2017_1"
 
-# 这里按你的 6/7-6/17 行程配置。坐标可以之后继续微调。
-# 注意：Open-Meteo 只有未来最多 16 天预报；离旅行太远时，目标日期可能没有数据。
-DAY_PLACES = [
-    {
-        "date": "2026-06-07",
-        "title": "Day 1 · Reykjavík & Golden Circle",
-        "places": [
-            {"name": "Reykjavík", "lat": 64.1466, "lon": -21.9426},
-            {"name": "Þingvellir", "lat": 64.2559, "lon": -21.1295},
-            {"name": "Brúarfoss", "lat": 64.2635, "lon": -20.5156},
-            {"name": "Geysir", "lat": 64.3138, "lon": -20.3007},
-            {"name": "Gullfoss", "lat": 64.3271, "lon": -20.1199},
-        ],
-    },
-    {
-        "date": "2026-06-08",
-        "title": "Day 2 · South Coast",
-        "places": [
-            {"name": "Seljalandsfoss", "lat": 63.6156, "lon": -19.9886},
-            {"name": "Skógafoss", "lat": 63.5321, "lon": -19.5114},
-            {"name": "Reynisfjara", "lat": 63.4044, "lon": -19.0443},
-            {"name": "Vík", "lat": 63.4186, "lon": -19.0060},
-        ],
-    },
-    {
-        "date": "2026-06-09",
-        "title": "Day 3 · Skaftafell & Glacier Lagoon",
-        "places": [
-            {"name": "Fjaðrárgljúfur", "lat": 63.7712, "lon": -18.1719},
-            {"name": "Skaftafell", "lat": 64.0150, "lon": -16.9669},
-            {"name": "Jökulsárlón", "lat": 64.0481, "lon": -16.1794},
-            {"name": "Diamond Beach", "lat": 64.0430, "lon": -16.1777},
-        ],
-    },
-    {
-        "date": "2026-06-10",
-        "title": "Day 4 · East Iceland",
-        "places": [
-            {"name": "Höfn", "lat": 64.2497, "lon": -15.2020},
-            {"name": "Stokksnes", "lat": 64.2445, "lon": -14.9720},
-            {"name": "Djúpivogur", "lat": 64.6575, "lon": -14.2853},
-            {"name": "Egilsstaðir", "lat": 65.2669, "lon": -14.3948},
-        ],
-    },
-    {
-        "date": "2026-06-11",
-        "title": "Day 5 · North / Mývatn area",
-        "places": [
-            {"name": "Stuðlagil Canyon", "lat": 65.1637, "lon": -15.3077},
-            {"name": "Dettifoss", "lat": 65.8147, "lon": -16.3846},
-            {"name": "Mývatn", "lat": 65.6039, "lon": -16.9961},
-            {"name": "Akureyri", "lat": 65.6885, "lon": -18.1262},
-        ],
-    },
-    {
-        "date": "2026-06-12",
-        "title": "Day 6 · North to West",
-        "places": [
-            {"name": "Goðafoss", "lat": 65.6828, "lon": -17.5502},
-            {"name": "Akureyri", "lat": 65.6885, "lon": -18.1262},
-            {"name": "Hvítserkur", "lat": 65.6068, "lon": -20.6353},
-            {"name": "Snæfellsnes", "lat": 64.8333, "lon": -23.0000},
-        ],
-    },
-    {
-        "date": "2026-06-13",
-        "title": "Day 7 · Landmannalaugar",
-        "places": [
-            {"name": "Háifoss", "lat": 64.2070, "lon": -19.6869},
-            {"name": "Sigöldugljúfur", "lat": 64.1578, "lon": -19.1390},
-            {"name": "Landmannalaugar", "lat": 63.9926, "lon": -19.0609},
-        ],
-    },
-    {
-        "date": "2026-06-14",
-        "title": "Day 8 · Þórsmörk",
-        "places": [
-            {"name": "Þórsmörk", "lat": 63.6806, "lon": -19.4828},
-            {"name": "Stakkholtsgjá", "lat": 63.6864, "lon": -19.5130},
-        ],
-    },
-    {
-        "date": "2026-06-15",
-        "title": "Day 9 · Kerlingarfjöll",
-        "places": [
-            {"name": "Kerlingarfjöll", "lat": 64.6423, "lon": -19.2887},
-            {"name": "Hveradalir", "lat": 64.6529, "lon": -19.2824},
-        ],
-    },
-    {
-        "date": "2026-06-16",
-        "title": "Day 10 · Þakgil / Vík area",
-        "places": [
-            {"name": "Þakgil", "lat": 63.5302, "lon": -18.8892},
-            {"name": "Vík", "lat": 63.4186, "lon": -19.0060},
-        ],
-    },
-    {
-        "date": "2026-06-17",
-        "title": "Day 11 · Mælifell / return",
-        "places": [
-            {"name": "Mælifell", "lat": 63.7990, "lon": -18.9330},
-            {"name": "Vík", "lat": 63.4186, "lon": -19.0060},
-            {"name": "Keflavík Airport", "lat": 63.9850, "lon": -22.6056},
-        ],
-    },
-]
+TRIP_DATA_JS = Path("assets/iceland-trip-data.js")
 
+def load_weather_days_from_trip_data():
+    text = TRIP_DATA_JS.read_text(encoding="utf-8")
+
+    # 适用于文件里有 weatherStops: [...] 的情况。
+    # 这个解析方式比完整解析 JS 简单，但要求 weatherStops 里只放普通对象，不要放函数。
+    day_blocks = re.findall(
+        r"\{[^{}]*?(?:id|date)\s*:\s*['\"][^'\"]+['\"][\s\S]*?weatherStops\s*:\s*(\[[\s\S]*?\])[\s\S]*?\}",
+        text
+    )
+
+    # 更稳的方式：直接从所有 day 对象中提取 date/title/weatherStops
+    day_pattern = re.compile(
+        r"\{(?P<body>[\s\S]*?weatherStops\s*:\s*\[[\s\S]*?\][\s\S]*?)\}",
+        re.MULTILINE
+    )
+
+    days = []
+    for m in day_pattern.finditer(text):
+        body = m.group("body")
+
+        date_match = re.search(r"date\s*:\s*['\"]([^'\"]+)['\"]", body)
+        title_match = re.search(r"title\s*:\s*['\"]([^'\"]+)['\"]", body)
+        id_match = re.search(r"id\s*:\s*['\"]([^'\"]+)['\"]", body)
+        alt_match = re.search(r"isAlternative\s*:\s*true", body)
+
+        stops_match = re.search(r"weatherStops\s*:\s*(\[[\s\S]*?\])", body)
+        if not date_match or not stops_match:
+            continue
+
+        raw_stops = stops_match.group(1)
+
+        # 把 JS object 写法转成 JSON-like。
+        # 要求 weatherStops 中字段写成 name/lat/lon，字符串用双引号或单引号都可以。
+        json_like = raw_stops
+        json_like = re.sub(r"(\w+)\s*:", r'"\1":', json_like)
+        json_like = json_like.replace("'", '"')
+        json_like = re.sub(r",\s*]", "]", json_like)
+        json_like = re.sub(r",\s*}", "}", json_like)
+
+        try:
+            stops = json.loads(json_like)
+        except Exception as e:
+            raise ValueError(f"Failed to parse weatherStops for {date_match.group(1)}: {e}")
+
+        days.append({
+            "id": id_match.group(1) if id_match else date_match.group(1),
+            "date": date_match.group(1),
+            "title": title_match.group(1) if title_match else date_match.group(1),
+            "isAlternative": bool(alt_match),
+            "places": stops,
+        })
+
+    return days
 # 这里按你想看的“地点 -> 公路”分组。
 # keywords 用于在 Vegagerðin 返回的路段名称里做模糊匹配。
 ROAD_GROUPS = [
     {
+        "destination": "Landmannalaugar",
+        "route_options": [
+            {
+                "name": "F26 + F208 North",
+                "segments": [
+                    {
+                        "road": "F26",
+                        "label": "Hringvegur → Vatnsfellsvirkjun",
+                        "must_include": ["F26"],
+                        "any_include": ["Hringvegur", "Vatnsfellsvirkjun", "Þjóðvegur", "Thjodvegur"],
+                    },
+                    {
+                        "road": "F208",
+                        "label": "Vatnsfellsvirkjun → Landmannalaugar",
+                        "must_include": ["F208"],
+                        "any_include": ["Vatnsfellsvirkjun", "Landmannalaugar", "Fjallabaksleið nyrðri", "Fjallabaksleid nyrdri"],
+                    },
+                ],
+            },
+            {
+                "name": "F225 Landmannaleið",
+                "segments": [
+                    {
+                        "road": "F225",
+                        "label": "Landmannaleið",
+                        "must_include": ["F225"],
+                        "any_include": ["Landmannaleið", "Landmannaleid"],
+                    },
+                ],
+            },
+            {
+                "name": "F208 South",
+                "segments": [
+                    {
+                        "road": "F208",
+                        "label": "F208 South / Eldgjá side",
+                        "must_include": ["F208"],
+                        "any_include": ["Eldgjá", "Eldgja", "Skaftártunga", "Fjallabaksleið syðri", "Fjallabaksleid sydri"],
+                    },
+                ],
+            },
+        ],
+    },
+    {
         "destination": "Mælifell / 抹茶山",
-        "routes": [
+        "route_options": [
             {
-                "road": "F232",
-                "label": "Vík → F232 → F210",
-                "keywords": ["F232", "Öldufellsleið", "Oldufellsleid"],
+                "name": "Vík → F232 → F210",
+                "segments": [
+                    {
+                        "road": "F232",
+                        "label": "F232 Öldufellsleið",
+                        "must_include": ["F232"],
+                        "any_include": ["Öldufellsleið", "Oldufellsleid"],
+                    },
+                    {
+                        "road": "F210",
+                        "label": "F210 near Mælifell",
+                        "must_include": ["F210"],
+                        "any_include": ["Mælifell", "Maelifell", "Fjallabaksleið syðri", "Fjallabaksleid sydri"],
+                    },
+                ],
             },
             {
-                "road": "F210",
-                "label": "F210 Fjallabaksleið syðri",
-                "keywords": ["F210", "Fjallabaksleið syðri", "Fjallabaksleid sydri", "Mælifell", "Maelifell"],
+                "name": "F210 direct",
+                "segments": [
+                    {
+                        "road": "F210",
+                        "label": "F210 Fjallabaksleið syðri",
+                        "must_include": ["F210"],
+                        "any_include": ["Fjallabaksleið syðri", "Fjallabaksleid sydri", "Mælifell", "Maelifell"],
+                    },
+                ],
             },
             {
-                "road": "F233",
-                "label": "F233/F210 alternative",
-                "keywords": ["F233", "Álftavatnskrókur", "Alftavatnskrokur"],
+                "name": "F233 / F210 alternative",
+                "segments": [
+                    {
+                        "road": "F233",
+                        "label": "F233 Álftavatnskrókur",
+                        "must_include": ["F233"],
+                        "any_include": ["Álftavatnskrókur", "Alftavatnskrokur"],
+                    },
+                    {
+                        "road": "F210",
+                        "label": "F210 connection",
+                        "must_include": ["F210"],
+                        "any_include": ["Fjallabaksleið syðri", "Fjallabaksleid sydri", "Mælifell", "Maelifell"],
+                    },
+                ],
             },
         ],
     },
     {
         "destination": "Þórsmörk",
-        "routes": [
+        "route_options": [
             {
-                "road": "F249",
-                "label": "F249 Þórsmerkurvegur",
-                "keywords": ["F249", "Þórsmerkurvegur", "Thorsmerkurvegur", "Þórsmörk", "Thorsmork"],
-            },
-        ],
-    },
-    {
-        "destination": "Landmannalaugar",
-        "routes": [
-            {
-                "road": "F26 + F208 North",
-                "label": "F26 small part + F208 north access",
-                "keywords": ["F26", "Sprengisandur", "F208", "Fjallabaksleið nyrðri", "Landmannalaugar"],
-            },
-            {
-                "road": "F208 South",
-                "label": "F208 south",
-                "keywords": ["F208", "Fjallabaksleið syðri", "Eldgjá", "Skaftártunga"],
-            },
-            {
-                "road": "F225",
-                "label": "F225 Landmannaleið",
-                "keywords": ["F225", "Landmannaleið", "Landmannaleid"],
+                "name": "F249",
+                "segments": [
+                    {
+                        "road": "F249",
+                        "label": "F249 Þórsmerkurvegur",
+                        "must_include": ["F249"],
+                        "any_include": ["Þórsmerkurvegur", "Thorsmerkurvegur", "Þórsmörk", "Thorsmork"],
+                    },
+                ],
             },
         ],
     },
     {
         "destination": "Kerlingarfjöll",
-        "routes": [
+        "route_options": [
             {
-                "road": "35",
-                "label": "Road 35 / Kjölur",
-                "keywords": ["35", "Kjalvegur", "Kjölur", "Kjalvegur"],
-            },
-            {
-                "road": "F347",
-                "label": "F347 Kerlingarfjallavegur",
-                "keywords": ["F347", "Kerlingarfjallavegur", "Kerlingarfjöll", "Kerlingarfjoll"],
+                "name": "35 + F347",
+                "segments": [
+                    {
+                        "road": "35",
+                        "label": "Road 35 / Kjölur",
+                        "must_include": ["35"],
+                        "any_include": ["Kjalvegur", "Kjölur", "Kjolur"],
+                    },
+                    {
+                        "road": "F347",
+                        "label": "F347 Kerlingarfjallavegur",
+                        "must_include": ["F347"],
+                        "any_include": ["Kerlingarfjallavegur", "Kerlingarfjöll", "Kerlingarfjoll"],
+                    },
+                ],
             },
         ],
     },
     {
         "destination": "Þakgil",
-        "routes": [
+        "route_options": [
             {
-                "road": "214",
-                "label": "Road 214 to Þakgil",
-                "keywords": ["214", "Þakgil", "Thakgil"],
+                "name": "Road 214",
+                "segments": [
+                    {
+                        "road": "214",
+                        "label": "Road 214 to Þakgil",
+                        "must_include": ["214"],
+                        "any_include": ["Þakgil", "Thakgil"],
+                    },
+                ],
             },
         ],
     },
@@ -306,7 +326,7 @@ def fetch_place_weather(place, date):
 
 def fetch_daily_weather():
     results = []
-    for day in DAY_PLACES:
+    for day in load_weather_days_from_trip_data():
         day_item = {
             "date": day["date"],
             "title": day["title"],
@@ -375,13 +395,22 @@ def section_text(section):
     return normalize_text(" ".join(str(p) for p in parts if p))
 
 
-def match_sections(sections, keywords):
-    norm_keywords = [normalize_text(k) for k in keywords]
+def match_sections(sections, must_include=None, any_include=None):
+    must_include = [normalize_text(x) for x in (must_include or [])]
+    any_include = [normalize_text(x) for x in (any_include or [])]
+
     matched = []
     for sec in sections:
         text = section_text(sec)
-        if any(k in text for k in norm_keywords):
-            matched.append(sec)
+
+        if must_include and not all(k in text for k in must_include):
+            continue
+
+        if any_include and not any(k in text for k in any_include):
+            continue
+
+        matched.append(sec)
+
     return matched
 
 
@@ -456,55 +485,66 @@ def fetch_road_groups():
     try:
         sections = fetch_road_sections()
     except Exception as e:
-        return [
-            {
-                "destination": group["destination"],
-                "routes": [
-                    {
-                        "road": route["road"],
-                        "label": route["label"],
-                        "status": "Fetch failed",
-                        "open": None,
-                        "icon": "❔",
-                        "detail": str(e),
-                        "official_url": "https://umferdin.is/en",
-                    }
-                    for route in group["routes"]
-                ],
-            }
-            for group in ROAD_GROUPS
-        ]
+        return []
 
     output = []
+
     for group in ROAD_GROUPS:
         group_item = {
             "destination": group["destination"],
-            "routes": [],
+            "route_options": [],
         }
 
-        for route in group["routes"]:
-            matched = match_sections(sections, route["keywords"])
-            status = route_status_from_sections(matched)
+        for option in group["route_options"]:
+            option_item = {
+                "name": option["name"],
+                "segments": [],
+            }
 
-            group_item["routes"].append({
-                "road": route["road"],
-                "label": route["label"],
-                "status": status["status"],
-                "open": status["open"],
-                "icon": status["icon"],
-                "detail": status["detail"],
-                "matched_count": len(matched),
-                "matched_sections": [
-                    {
-                        "name": sec.get("FulltNafnButs") or sec.get("StuttNafnButs"),
-                        "condition": sec.get("AstandYfirbord") or sec.get("Astand"),
-                        "condition_en": sec.get("AstandLysingEn") or sec.get("AstandLysing"),
-                        "registered_at": sec.get("DagsSkrad"),
-                    }
-                    for sec in matched[:6]
-                ],
-                "official_url": "https://umferdin.is/en",
-            })
+            for seg in option["segments"]:
+                matched = match_sections(
+                    sections,
+                    must_include=seg.get("must_include"),
+                    any_include=seg.get("any_include"),
+                )
+                status = route_status_from_sections(matched)
+
+                option_item["segments"].append({
+                    "road": seg["road"],
+                    "label": seg["label"],
+                    "status": status["status"],
+                    "open": status["open"],
+                    "icon": status["icon"],
+                    "detail": status["detail"],
+                    "matched_count": len(matched),
+                    "matched_sections": [
+                        {
+                            "name": sec.get("FulltNafnButs") or sec.get("StuttNafnButs"),
+                            "condition": sec.get("AstandYfirbord") or sec.get("Astand"),
+                            "condition_en": sec.get("AstandLysingEn") or sec.get("AstandLysing"),
+                            "registered_at": sec.get("DagsSkrad"),
+                        }
+                        for sec in matched[:6]
+                    ],
+                    "official_url": "https://umferdin.is/en",
+                })
+
+            # 路线整体状态：只要有一段 closed，就路线 closed；全部 open 才 open。
+            segment_opens = [s["open"] for s in option_item["segments"]]
+            if any(v is False for v in segment_opens):
+                option_item["overall_status"] = "Closed / Partly closed"
+                option_item["overall_open"] = False
+                option_item["overall_icon"] = "⛔"
+            elif segment_opens and all(v is True for v in segment_opens):
+                option_item["overall_status"] = "Open"
+                option_item["overall_open"] = True
+                option_item["overall_icon"] = "✅"
+            else:
+                option_item["overall_status"] = "Unknown / Check official"
+                option_item["overall_open"] = None
+                option_item["overall_icon"] = "❔"
+
+            group_item["route_options"].append(option_item)
 
         output.append(group_item)
 
