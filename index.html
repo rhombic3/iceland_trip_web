@@ -177,7 +177,7 @@ async function loadLiveData() {
       const places = day.places || [];
       const fallback = places.find(p => p.is_fallback && p.fallback_date);
       if (fallback) {
-        return `${day.date} · 显示 ${fallback.fallback_date} 天气`;
+        return `${fallback.fallback_date}`;
       }
       return day.date || "";
     }
@@ -267,7 +267,13 @@ async function loadLiveData() {
       return "status-unknown";
     }
 
-    function compactRoadLabel(text, maxLen = 34) {
+    function statusDot(open) {
+      if (open === true) return "●";
+      if (open === false) return "●";
+      return "●";
+    }
+
+    function compactRoadLabel(text, maxLen = 24) {
       if (!text) return "";
       const clean = String(text).replace(/\s+/g, " ").trim();
       if (clean.length <= maxLen) return clean;
@@ -284,35 +290,31 @@ async function loadLiveData() {
         `;
       }
 
-      return groups.map(group => `
+      const cards = groups.map(group => `
         <article class="road-group-card">
           <h4>${group.destination}</h4>
 
           <div class="road-option-list">
             ${(group.route_options || []).map(option => `
               <section class="road-option-card">
-                <div class="road-option-head">
-                  <span class="road-option-title">${compactRoadLabel(option.name, 28)}</span>
-                  <span class="road-status ${statusClass(option.overall_open)}">
-                    ${option.overall_icon || "❔"} ${option.overall_status || "Unknown"}
+                <div class="road-option-head compact-road-option-head">
+                  <span class="road-option-title">${compactRoadLabel(option.name, 24)}</span>
+                  <span class="road-dot ${statusClass(option.overall_open)}" title="${option.overall_status || "Unknown"}">
+                    ${statusDot(option.overall_open)}
                   </span>
                 </div>
 
                 <div class="road-segment-list">
                   ${(option.segments || []).map(seg => `
-                    <div class="road-segment-row">
-                      <div class="road-segment-main">
-                        <strong>${seg.road}</strong>
-                        <span>${compactRoadLabel(seg.label, 30)}</span>
-                      </div>
-
-                      <span class="road-status ${statusClass(seg.open)}">
-                        ${seg.icon || "❔"} ${seg.status || "Unknown"}
+                    <div class="road-segment-row compact-road-segment-row">
+                      <span class="road-dot ${statusClass(seg.open)}" title="${seg.status || "Unknown"}">
+                        ${statusDot(seg.open)}
                       </span>
 
-                      <a href="${seg.official_url || "https://umferdin.is/en"}" target="_blank" rel="noopener">
-                        官方
-                      </a>
+                      <div class="road-segment-main">
+                        <strong>${seg.road}</strong>
+                        <span>${compactRoadLabel(seg.label, 26)}</span>
+                      </div>
                     </div>
                   `).join("")}
                 </div>
@@ -321,6 +323,21 @@ async function loadLiveData() {
           </div>
         </article>
       `).join("");
+
+      return `
+        <div class="road-legend-bar">
+          <div class="road-legend">
+            <span><i class="legend-dot status-open"></i>开放</span>
+            <span><i class="legend-dot status-closed"></i>关闭/部分关闭</span>
+            <span><i class="legend-dot status-unknown"></i>未知/需确认</span>
+          </div>
+          <a href="https://umferdin.is/en" target="_blank" rel="noopener">
+            查看官方路况
+          </a>
+        </div>
+
+        ${cards}
+      `;
     }
 
   } catch (err) {
