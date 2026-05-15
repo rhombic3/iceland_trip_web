@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T03:34:48+00:00",
+  "updated_at": "2026-05-15T03:39:37+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -391,10 +391,23 @@
         {
           "id": "HOFN",
           "name": "Höfn 霍芬",
-          "date": "2026-06-09",
-          "error": "<urlopen error _ssl.c:999: The handshake operation timed out>",
-          "summary": "暂无预报",
-          "icon": "❔"
+          "lat": 64.2497,
+          "lon": -15.202,
+          "date": "2026-05-15",
+          "summary": "毛毛雨",
+          "icon": "🌦️",
+          "weather_code": 53,
+          "temperature_min": 4.3,
+          "temperature_max": 7.9,
+          "precipitation_sum": 1.8,
+          "precipitation_probability_max": 85,
+          "wind_speed_max": 15.5,
+          "wind_gusts_max": 22.0,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.2497&longitude=-15.202&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-05-15&end_date=2026-05-15",
+          "target_date": "2026-06-09",
+          "fallback_date": "2026-05-15",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-09 暂无预报，当前显示 2026-05-15 的天气。"
         }
       ]
     },
@@ -517,10 +530,23 @@
         {
           "id": "KRAF",
           "name": "Krafla 火山口 / Víti",
-          "date": "2026-06-11",
-          "error": "<urlopen error _ssl.c:999: The handshake operation timed out>",
-          "summary": "暂无预报",
-          "icon": "❔"
+          "lat": 65.7171,
+          "lon": -16.7548,
+          "date": "2026-05-15",
+          "summary": "多云",
+          "icon": "☁️",
+          "weather_code": 3,
+          "temperature_min": -4.2,
+          "temperature_max": 5.0,
+          "precipitation_sum": 0.0,
+          "precipitation_probability_max": 8,
+          "wind_speed_max": 16.6,
+          "wind_gusts_max": 21.2,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.7171&longitude=-16.7548&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-05-15&end_date=2026-05-15",
+          "target_date": "2026-06-11",
+          "fallback_date": "2026-05-15",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-11 暂无预报，当前显示 2026-05-15 的天气。"
         },
         {
           "name": "Hverir 地热区",
@@ -1142,11 +1168,7 @@
           "precipitation_probability_max": 97,
           "wind_speed_max": 34.6,
           "wind_gusts_max": 45.4,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.07&longitude=-18.233&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-05-15&end_date=2026-05-15",
-          "target_date": "2026-05-15",
-          "fallback_date": "2026-05-15",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-05-15 暂无预报，当前显示 2026-05-15 的天气。"
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.07&longitude=-18.233&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-05-15&end_date=2026-05-15"
         },
         {
           "name": "Vík 维克镇红教堂",

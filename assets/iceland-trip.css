@@ -927,3 +927,23 @@
         font-size: 11.5px;
     }
     }
+
+    /* ===== Single Vedur station forecast frame ===== */
+
+    .single-vedur-card {
+    margin-top: 12px;
+    }
+
+    .vedur-iframe {
+    width: 100%;
+    height: 680px;
+    border: 0;
+    border-radius: 14px;
+    background: #f8fafc;
+    }
+
+    @media (max-width: 640px) {
+    .vedur-iframe {
+        height: 560px;
+    }
+    }
