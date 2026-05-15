@@ -4,68 +4,17 @@ import urllib.request
 import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
+import subprocess
 
 OUT = Path("assets/live-data.json")
+TRIP_DATA_JS = Path("assets/iceland-trip-data.js")
+TRIP_YEAR = 2026
 
 OPEN_METEO_URL = "https://api.open-meteo.com/v1/forecast"
 ROAD_STATUS_URL = "https://gagnaveita.vegagerdin.is/api/faerd2017_1"
 
 TRIP_DATA_JS = Path("assets/iceland-trip-data.js")
 
-def load_weather_days_from_trip_data():
-    text = TRIP_DATA_JS.read_text(encoding="utf-8")
-
-    # 适用于文件里有 weatherStops: [...] 的情况。
-    # 这个解析方式比完整解析 JS 简单，但要求 weatherStops 里只放普通对象，不要放函数。
-    day_blocks = re.findall(
-        r"\{[^{}]*?(?:id|date)\s*:\s*['\"][^'\"]+['\"][\s\S]*?weatherStops\s*:\s*(\[[\s\S]*?\])[\s\S]*?\}",
-        text
-    )
-
-    # 更稳的方式：直接从所有 day 对象中提取 date/title/weatherStops
-    day_pattern = re.compile(
-        r"\{(?P<body>[\s\S]*?weatherStops\s*:\s*\[[\s\S]*?\][\s\S]*?)\}",
-        re.MULTILINE
-    )
-
-    days = []
-    for m in day_pattern.finditer(text):
-        body = m.group("body")
-
-        date_match = re.search(r"date\s*:\s*['\"]([^'\"]+)['\"]", body)
-        title_match = re.search(r"title\s*:\s*['\"]([^'\"]+)['\"]", body)
-        id_match = re.search(r"id\s*:\s*['\"]([^'\"]+)['\"]", body)
-        alt_match = re.search(r"isAlternative\s*:\s*true", body)
-
-        stops_match = re.search(r"weatherStops\s*:\s*(\[[\s\S]*?\])", body)
-        if not date_match or not stops_match:
-            continue
-
-        raw_stops = stops_match.group(1)
-
-        # 把 JS object 写法转成 JSON-like。
-        # 要求 weatherStops 中字段写成 name/lat/lon，字符串用双引号或单引号都可以。
-        json_like = raw_stops
-        json_like = re.sub(r"(\w+)\s*:", r'"\1":', json_like)
-        json_like = json_like.replace("'", '"')
-        json_like = re.sub(r",\s*]", "]", json_like)
-        json_like = re.sub(r",\s*}", "}", json_like)
-
-        try:
-            stops = json.loads(json_like)
-        except Exception as e:
-            raise ValueError(f"Failed to parse weatherStops for {date_match.group(1)}: {e}")
-
-        days.append({
-            "id": id_match.group(1) if id_match else date_match.group(1),
-            "date": date_match.group(1),
-            "title": title_match.group(1) if title_match else date_match.group(1),
-            "isAlternative": bool(alt_match),
-            "places": stops,
-        })
-
-    return days
-# 这里按你想看的“地点 -> 公路”分组。
 # keywords 用于在 Vegagerðin 返回的路段名称里做模糊匹配。
 ROAD_GROUPS = [
     {
@@ -326,29 +275,43 @@ def fetch_place_weather(place, date):
 
 def fetch_daily_weather():
     results = []
-    for day in load_weather_days_from_trip_data():
+
+    for day in build_weather_days_from_trip_data():
         day_item = {
+            "id": day.get("id"),
             "date": day["date"],
+            "tab": day.get("tab", ""),
             "title": day["title"],
+            "isAlternative": day.get("isAlternative", False),
             "places": [],
         }
 
         for place in day["places"]:
             try:
                 day_item["places"].append(fetch_place_weather(place, day["date"]))
-            except Exception as e:
-                day_item["places"].append({
-                    "name": place["name"],
-                    "date": day["date"],
-                    "error": str(e),
-                    "summary": "暂无预报",
-                    "icon": "❔",
-                })
+            except Exception:
+                # 如果目标日期还没有天气预报，就回退到当天实时/当日天气。
+                try:
+                    today = datetime.now(timezone.utc).date().isoformat()
+                    fallback = fetch_place_weather(place, today)
+                    fallback["target_date"] = day["date"]
+                    fallback["fallback_date"] = today
+                    fallback["is_fallback"] = True
+                    fallback["fallback_note"] = f"目标日期 {day['date']} 暂无预报，当前显示 {today} 的天气。"
+                    day_item["places"].append(fallback)
+                except Exception as e2:
+                    day_item["places"].append({
+                        "id": place.get("id"),
+                        "name": place["name"],
+                        "date": day["date"],
+                        "error": str(e2),
+                        "summary": "暂无预报",
+                        "icon": "❔",
+                    })
 
         results.append(day_item)
 
     return results
-
 
 def normalize_text(s):
     if s is None:
@@ -575,6 +538,149 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
+def load_trip_data_from_js():
+    """
+    Read assets/iceland-trip-data.js and extract const spots / const days.
+
+    This works with files like:
+      const spots = {...}
+      const days = [...]
+    """
+    js_path = TRIP_DATA_JS.resolve()
+
+    node_code = f"""
+const fs = require('fs');
+const vm = require('vm');
+
+const code = fs.readFileSync({json.dumps(str(js_path))}, 'utf8');
+
+const sandbox = {{}};
+vm.createContext(sandbox);
+
+vm.runInContext(code + `
+;globalThis.__tripData = {{
+  spots: typeof spots !== 'undefined' ? spots : {{}},
+  days: typeof days !== 'undefined' ? days : [],
+  alternatives: typeof alternatives !== 'undefined' ? alternatives : []
+}};
+`, sandbox);
+
+console.log(JSON.stringify(sandbox.__tripData));
+"""
+
+    result = subprocess.run(
+        ["node", "-e", node_code],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    )
+
+    return json.loads(result.stdout)
+
+
+def parse_trip_date(day):
+    """
+    Convert day.tab like '6/7' to '2026-06-07'.
+    If the day already has a date field, use it directly.
+    """
+    if day.get("date"):
+        return day["date"]
+
+    tab = str(day.get("tab", "")).strip()
+    m = re.search(r"(\d{1,2})\s*/\s*(\d{1,2})", tab)
+    if not m:
+        return datetime.now(timezone.utc).date().isoformat()
+
+    month = int(m.group(1))
+    date = int(m.group(2))
+    return f"{TRIP_YEAR}-{month:02d}-{date:02d}"
+
+
+def should_skip_weather_spot(spot_id, spot):
+    """
+    Exclude places that are not useful for tourist weather cards.
+    You can adjust this list later.
+    """
+    sid = str(spot_id).upper()
+    name = str(spot.get("name", "")).lower()
+
+    skip_keywords = [
+        "stay",
+        "hotel",
+        "住宿",
+        "机场",
+        "airport",
+        "toilet",
+        "厕所",
+        "gas",
+        "加油",
+        "supermarket",
+        "bónus",
+        "bonus",
+        "krónan",
+        "kronan",
+    ]
+
+    if sid.startswith(("STAY", "HOTEL", "LODGE", "TOILET", "GAS", "FOOD")):
+        return True
+
+    return any(k in name for k in skip_keywords)
+
+
+def build_weather_days_from_trip_data():
+    trip = load_trip_data_from_js()
+    spots = trip.get("spots", {})
+
+    # 如果你的 4 个备选也在 days 里，这里会自动包含。
+    # 如果你单独用了 alternatives 数组，这里也会拼进去。
+    raw_days = []
+    raw_days.extend(trip.get("days", []))
+    raw_days.extend(trip.get("alternatives", []))
+
+    weather_days = []
+
+    for index, day in enumerate(raw_days, start=1):
+        spot_ids = day.get("spots", [])
+        places = []
+
+        for spot_id in spot_ids:
+            spot = spots.get(spot_id)
+            if not spot:
+                continue
+
+            if should_skip_weather_spot(spot_id, spot):
+                continue
+
+            lat = spot.get("lat")
+            lon = spot.get("lng", spot.get("lon"))
+
+            if lat is None or lon is None:
+                continue
+
+            places.append({
+                "id": spot_id,
+                "name": spot.get("name", spot_id),
+                "lat": lat,
+                "lon": lon,
+            })
+
+        # 避免一天景点过多，天气区太长。你可以改成 6 或 8。
+        places = places[:8]
+
+        if not places:
+            continue
+
+        weather_days.append({
+            "id": day.get("id", f"day-{index}"),
+            "date": parse_trip_date(day),
+            "tab": day.get("tab", ""),
+            "title": day.get("title", f"Day {index}"),
+            "isAlternative": bool(day.get("isAlternative", False) or day.get("alternative", False)),
+            "places": places,
+        })
+
+    return weather_days
 
 if __name__ == "__main__":
     main()
