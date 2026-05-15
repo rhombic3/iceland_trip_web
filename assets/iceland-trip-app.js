@@ -257,10 +257,34 @@ function goTodayMode() {
   const targetDay = getTodayTripDayId();
   selectDay(targetDay);
 
-  const content = byId('content');
-  if (content) {
-    content.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  requestAnimationFrame(() => {
+    const activeTab = document.querySelector('.tab.active, .day-tab.active, [data-day].active');
+    const mainPanel =
+      byId('content') ||
+      byId('timeline') ||
+      document.querySelector('.main') ||
+      document.querySelector('.content');
+
+    if (activeTab) {
+      activeTab.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+
+    if (mainPanel && typeof mainPanel.scrollTo === 'function') {
+      mainPanel.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 }
 
 function selectDay(day) {
@@ -535,11 +559,28 @@ function renderQuickActions() {
   bar.className = 'quickActions';
 
   bar.innerHTML = `
-    <button type="button" onclick="goTodayMode()">${todayLabel}</button>
-    <button type="button" onclick="scrollToElementById('weatherCards')">天气</button>
-    <button type="button" onclick="scrollToElementById('roadCards')">高地</button>
-    <button type="button" onclick="scrollToElementById('mapPanel')">地图</button>
+    <button type="button" data-action="today">${todayLabel}</button>
+    <button type="button" data-action="map">地图</button>
+    <button type="button" data-action="weather">天气</button>
+    <button type="button" data-action="road">高地</button>
   `;
+
+  bar.addEventListener('click', (event) => {
+    const button = event.target.closest('button');
+    if (!button) return;
+
+    const action = button.dataset.action;
+
+    if (action === 'today') {
+      goTodayMode();
+    } else if (action === 'weather') {
+      scrollToElementById('weatherCards');
+    } else if (action === 'road') {
+      scrollToElementById('roadCards');
+    } else if (action === 'map') {
+      scrollToElementById('mapPanel');
+    }
+  });
 
   document.body.appendChild(bar);
 }
