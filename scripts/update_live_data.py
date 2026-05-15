@@ -21,7 +21,7 @@ ROAD_GROUPS = [
         "destination": "Landmannalaugar",
         "route_options": [
             {
-                "name": "F26 + F208 North",
+                "name": "F26 + F208 North 最简单",
                 "segments": [
                     {"road": "26", "label": "Landvegur: Hringvegur - Laugaland", "official_name": "Landvegur : Hringvegur - Laugaland"},
                     {"road": "26", "label": "Landvegur: Laugaland - Bjallavegur", "official_name": "Landvegur: Laugaland - Bjallavegur"},
@@ -44,7 +44,7 @@ ROAD_GROUPS = [
                 ],
             },
             {
-                "name": "F208 South",
+                "name": "F208 South 风景最好",
                 "segments": [
                     {"road": "208", "label": "Skaftártunguvegur austan Flögu", "official_name": "Skaftártunguvegur austan Flögu"},
                     {"road": "208", "label": "Skaftártunguvegur og Ljótarstaðavegur", "official_name": "Skaftártunguvegur og Ljótarstaðavegur"},
@@ -59,14 +59,14 @@ ROAD_GROUPS = [
         "destination": "Mælifell / 抹茶山",
         "route_options": [
             {
-                "name": "F232 + F210",
+                "name": "F232 + F210 最简单",
                 "segments": [
                     {"road": "232", "label": "Öldufellsleið", "official_name": "Öldufellsleið"},
                     {"road": "210", "label": "Snæbýli - Emstruleið", "official_name": "Fjallabaksleið syðri: Snæbýli - Emstruleið"},
                 ],
             },
             {
-                "name": "F210 West",
+                "name": "F210 West 风景最好",
                 "segments": [
                     {"road": "210", "label": "Snæbýli - Emstruleið", "official_name": "Fjallabaksleið syðri: Snæbýli - Emstruleið"},
                     {"road": "210", "label": "Emstruleið - Rangárvallavegur", "official_name": "Fjallabaksleið syðri: Emstruleið - Rangárvallavegur"},
@@ -86,7 +86,7 @@ ROAD_GROUPS = [
         "destination": "Þórsmörk",
         "route_options": [
             {
-                "name": "F249",
+                "name": "F249 危险，看好天气",
                 "segments": [
                     {"road": "249", "label": "að Seljalandsfossi", "official_name": "Þórsmerkurvegur að Seljalandsfossi"},
                     {"road": "249", "label": "Seljalandsfoss - Merkurvegur", "official_name": "Þórsmerkurvegur: Seljalandsfoss - Merkurvegur"},

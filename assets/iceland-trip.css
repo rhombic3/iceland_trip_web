@@ -754,3 +754,55 @@
         gap: 7px;
     }
     }
+
+    /* ===== Compact left itinerary event cards ===== */
+
+    .timeline {
+    gap: 5px !important;
+    }
+
+    .event {
+    grid-template-columns: 62px 24px minmax(0, 1fr) !important;
+    gap: 6px !important;
+    padding: 6px 7px !important;
+    border-radius: 14px !important;
+    align-items: center !important;
+    }
+
+    .time {
+    font-size: 10.8px !important;
+    line-height: 1.05 !important;
+    font-weight: 950 !important;
+    }
+
+    .mode {
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 9px !important;
+    font-size: 12px !important;
+    }
+
+    .event strong {
+    font-size: 11.7px !important;
+    line-height: 1.12 !important;
+    }
+
+    .event span {
+    font-size: 10px !important;
+    line-height: 1.16 !important;
+    margin-top: 1px !important;
+    }
+
+    .event em {
+    display: none !important;
+    }
+
+    .eventLinks {
+    margin-top: 3px !important;
+    gap: 4px !important;
+    }
+
+    .eventLinks a {
+    font-size: 9.5px !important;
+    padding: 3px 6px !important;
+    }

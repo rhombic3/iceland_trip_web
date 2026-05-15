@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-15T02:11:28+00:00",
+  "updated_at": "2026-05-15T02:21:12+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -180,7 +180,7 @@
           "fallback_note": "目标日期 2026-06-08 暂无预报，当前显示 2026-05-15 的天气。"
         },
         {
-          "name": "DC-3 Airplane wreck - Eyvindarholt",
+          "name": "DC-3 Airplane",
           "lat": 63.4917,
           "lon": -19.3637,
           "date": "2026-05-15",

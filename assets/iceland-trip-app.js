@@ -333,9 +333,9 @@ function eventHTML(day, event, index) {
     )).join('')}</div>`
     : '';
 
-  const action = eventIsTransport(event)
-    ? '点击只显示路线'
-    : (isPopupSpot(event[4]) ? '点击只显示景点介绍' : '点击查看信息');
+  // const action = eventIsTransport(event)
+  //   ? '点击只显示路线'
+  //   : (isPopupSpot(event[4]) ? '点击只显示景点介绍' : '点击查看信息');
 
   return (
     `<div class="event" onclick="onEvent('${escapeAttr(day)}',${index})">` +
