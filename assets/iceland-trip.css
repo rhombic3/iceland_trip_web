@@ -872,3 +872,58 @@
     overflow: hidden !important;
     text-overflow: ellipsis !important;
     }
+
+    /* ===== Floating quick actions ===== */
+
+    .quickActions {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 9999;
+    display: flex;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.84);
+    border: 1px solid rgba(16, 24, 39, 0.08);
+    box-shadow: 0 18px 46px rgba(16, 24, 39, 0.16);
+    backdrop-filter: blur(18px);
+    }
+
+    .quickActions button {
+    border: 0;
+    border-radius: 999px;
+    padding: 8px 11px;
+    background: rgba(16, 24, 39, 0.08);
+    color: #101827;
+    font-size: 12px;
+    font-weight: 950;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+
+    .quickActions button:first-child {
+    background: #101827;
+    color: #fff;
+    }
+
+    .quickActions button:hover {
+    transform: translateY(-1px);
+    background: #101827;
+    color: #fff;
+    }
+
+    @media (max-width: 860px) {
+    .quickActions {
+        left: 50%;
+        right: auto;
+        bottom: 12px;
+        transform: translateX(-50%);
+        max-width: calc(100% - 20px);
+    }
+
+    .quickActions button {
+        padding: 8px 10px;
+        font-size: 11.5px;
+    }
+    }

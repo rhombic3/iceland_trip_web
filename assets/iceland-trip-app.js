@@ -217,6 +217,52 @@ function renderTabs() {
     .join('');
 }
 
+function parseTripTabDate(tab) {
+  const match = String(tab || '').match(/(\d{1,2})\s*\/\s*(\d{1,2})/);
+  if (!match) return null;
+
+  const month = Number(match[1]);
+  const day = Number(match[2]);
+
+  return new Date(2026, month - 1, day);
+}
+
+function findDayIdByTab(tab) {
+  const item = days.find(day => String(day.tab).trim() === tab);
+  return item ? item.id : null;
+}
+
+function getTodayTripDayId() {
+  const now = new Date();
+
+  const tripStart = new Date(2026, 5, 7);   // 2026-06-07
+  const hardSwitch = new Date(2026, 5, 14); // 2026-06-14
+
+  // 早于 6/7：默认第一天
+  if (now < tripStart) {
+    return 'd1';
+  }
+
+  // 晚于 6/14：默认显示 6/15
+  if (now > hardSwitch) {
+    return findDayIdByTab('6/15') || 'd9';
+  }
+
+  // 6/7 到 6/14：按真实日期匹配 tab
+  const todayTab = `${now.getMonth() + 1}/${now.getDate()}`;
+  return findDayIdByTab(todayTab) || 'd1';
+}
+
+function goTodayMode() {
+  const targetDay = getTodayTripDayId();
+  selectDay(targetDay);
+
+  const content = byId('content');
+  if (content) {
+    content.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
 function selectDay(day) {
   currentDay = day;
   renderTabs();
@@ -468,6 +514,42 @@ function reloadMap() {
   }
 }
 
-renderTabs();
-renderDay(currentDay);
-loadOverview(currentDay);
+function scrollToElementById(id) {
+  const el = byId(id);
+  if (!el) return;
+
+  el.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
+
+function renderQuickActions() {
+  if (byId('quickActions')) return;
+
+  const todayDay = days.find(day => day.id === getTodayTripDayId());
+  const todayLabel = todayDay ? `今日 ${todayDay.tab}` : '今日';
+
+  const bar = document.createElement('div');
+  bar.id = 'quickActions';
+  bar.className = 'quickActions';
+
+  bar.innerHTML = `
+    <button type="button" onclick="goTodayMode()">${todayLabel}</button>
+    <button type="button" onclick="scrollToElementById('weatherCards')">天气</button>
+    <button type="button" onclick="scrollToElementById('roadCards')">高地</button>
+    <button type="button" onclick="scrollToElementById('mapPanel')">地图</button>
+  `;
+
+  document.body.appendChild(bar);
+}
+
+function initApp() {
+  currentDay = getTodayTripDayId();
+  renderTabs();
+  renderDay(currentDay);
+  loadOverview(currentDay);
+  renderQuickActions();
+}
+
+initApp();
