@@ -127,7 +127,7 @@ async function loadLiveData() {
         })
       : "未知";
 
-    updatedEl.textContent = `最近更新时间：${updatedAt}（冰岛时间） 暂无旅行日天气时，默认显示今日天气`;
+    updatedEl.textContent = `最近更新时间：${updatedAt}（冰岛时间） ·  暂无旅行日天气时，默认显示今日天气`;
 
     weatherEl.innerHTML = renderDailyWeather(data.daily_weather || []);
     roadEl.innerHTML = renderRoadGroups(data.road_groups || []);
@@ -267,17 +267,94 @@ async function loadLiveData() {
       return "status-unknown";
     }
 
-    function statusDot(open) {
-      if (open === true) return "●";
-      if (open === false) return "●";
-      return "●";
-    }
-
-    function compactRoadLabel(text, maxLen = 24) {
+    function compactRoadLabel(text, maxLen = 32) {
       if (!text) return "";
       const clean = String(text).replace(/\s+/g, " ").trim();
       if (clean.length <= maxLen) return clean;
       return clean.slice(0, maxLen - 1) + "…";
+    }
+
+    function extractRoadEndpoints(label) {
+      if (!label) return { start: "", end: "" };
+
+      let text = String(label).trim();
+
+      // 去掉前缀，例如 "Landvegur: Hringvegur - Laugaland"
+      if (text.includes(":")) {
+        text = text.split(":").slice(1).join(":").trim();
+      }
+
+      // 统一不同横线
+      text = text.replace(/–/g, "-").replace(/—/g, "-");
+
+      const parts = text.split("-").map(x => x.trim()).filter(Boolean);
+
+      if (parts.length >= 2) {
+        return {
+          start: parts[0],
+          end: parts[parts.length - 1]
+        };
+      }
+
+      return {
+        start: text,
+        end: ""
+      };
+    }
+
+    function summarizeSegmentsByRoad(segments) {
+      const groups = new Map();
+
+      for (const seg of segments || []) {
+        const road = String(seg.road || "Road").trim();
+
+        if (!groups.has(road)) {
+          groups.set(road, {
+            road,
+            labels: [],
+            opens: [],
+            statuses: [],
+            segments: []
+          });
+        }
+
+        const item = groups.get(road);
+        item.labels.push(seg.label || "");
+        item.opens.push(seg.open);
+        item.statuses.push(seg.status || "Unknown");
+        item.segments.push(seg);
+      }
+
+      return Array.from(groups.values()).map(item => {
+        const first = extractRoadEndpoints(item.labels[0]);
+        const last = extractRoadEndpoints(item.labels[item.labels.length - 1]);
+
+        let open = null;
+        if (item.opens.some(v => v === false)) {
+          open = false;
+        } else if (item.opens.length && item.opens.every(v => v === true)) {
+          open = true;
+        }
+
+        let label = "";
+        if (first.start && last.end) {
+          label = `${first.start} → ${last.end}`;
+        } else if (first.start) {
+          label = first.start;
+        } else {
+          label = item.labels[0] || "";
+        }
+
+        return {
+          road: item.road,
+          label,
+          open,
+          segmentCount: item.segments.length,
+          detail: item.segments
+            .map(s => `${s.road} ${s.label || ""}: ${s.status || "Unknown"}`)
+            .join("\n")
+        };
+      });
     }
 
     function renderRoadGroups(groups) {
@@ -295,31 +372,31 @@ async function loadLiveData() {
           <h4>${group.destination}</h4>
 
           <div class="road-option-list">
-            ${(group.route_options || []).map(option => `
-              <section class="road-option-card">
-                <div class="road-option-head compact-road-option-head">
-                  <span class="road-option-title">${compactRoadLabel(option.name, 24)}</span>
-                  <span class="road-dot ${statusClass(option.overall_open)}" title="${option.overall_status || "Unknown"}">
-                    ${statusDot(option.overall_open)}
-                  </span>
-                </div>
+            ${(group.route_options || []).map(option => {
+              const summaryRows = summarizeSegmentsByRoad(option.segments || []);
 
-                <div class="road-segment-list">
-                  ${(option.segments || []).map(seg => `
-                    <div class="road-segment-row compact-road-segment-row">
-                      <span class="road-dot ${statusClass(seg.open)}" title="${seg.status || "Unknown"}">
-                        ${statusDot(seg.open)}
-                      </span>
+              return `
+                <section class="road-option-card">
+                  <div class="road-option-head compact-road-option-head">
+                    <span class="road-option-title">${compactRoadLabel(option.name, 26)}</span>
+                    <span class="road-dot ${statusClass(option.overall_open)}" title="${option.overall_status || "Unknown"}">●</span>
+                  </div>
 
-                      <div class="road-segment-main">
-                        <strong>${seg.road}</strong>
-                        <span>${compactRoadLabel(seg.label, 26)}</span>
+                  <div class="road-segment-list road-summary-list">
+                    ${summaryRows.map(row => `
+                      <div class="road-segment-row compact-road-segment-row road-summary-row" title="${row.detail}">
+                        <span class="road-dot ${statusClass(row.open)}">●</span>
+
+                        <div class="road-segment-main">
+                          <strong>${row.road}</strong>
+                          <span>${compactRoadLabel(row.label, 34)}</span>
+                        </div>
                       </div>
-                    </div>
-                  `).join("")}
-                </div>
-              </section>
-            `).join("")}
+                    `).join("")}
+                  </div>
+                </section>
+              `;
+            }).join("")}
           </div>
         </article>
       `).join("");
