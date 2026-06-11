@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-11T14:56:34+00:00",
+  "updated_at": "2026-06-11T18:22:08+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -183,21 +183,17 @@
           "name": "Kvernufoss 瀑布",
           "lat": 63.5275,
           "lon": -19.4806,
-          "date": "2026-06-11",
-          "summary": "多云",
-          "icon": "☁️",
-          "weather_code": 3,
-          "temperature_min": 4.7,
-          "temperature_max": 12.9,
-          "precipitation_sum": 0.0,
-          "precipitation_probability_max": 0,
-          "wind_speed_max": 28.8,
-          "wind_gusts_max": 47.2,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.5275&longitude=-19.4806&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
-          "target_date": "2026-06-08",
-          "fallback_date": "2026-06-11",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-06-08 暂无预报，当前显示 2026-06-11 的天气。"
+          "date": "2026-06-08",
+          "summary": "小雨",
+          "icon": "🌧️",
+          "weather_code": 61,
+          "temperature_min": 6.7,
+          "temperature_max": 10.1,
+          "precipitation_sum": 4.6,
+          "precipitation_probability_max": 100,
+          "wind_speed_max": 30.2,
+          "wind_gusts_max": 49.0,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.5275&longitude=-19.4806&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-08&end_date=2026-06-08"
         },
         {
           "name": "Dyrhólaey 海角",
@@ -260,17 +256,21 @@
           "name": "Skaftafell 冰川徒步 · Arctic Adventures Base Camp",
           "lat": 64.0167,
           "lon": -16.9667,
-          "date": "2026-06-09",
-          "summary": "小雨",
-          "icon": "🌧️",
-          "weather_code": 61,
-          "temperature_min": 6.2,
-          "temperature_max": 10.4,
-          "precipitation_sum": 9.4,
-          "precipitation_probability_max": 100,
-          "wind_speed_max": 31.0,
-          "wind_gusts_max": 51.5,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.0167&longitude=-16.9667&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-09&end_date=2026-06-09"
+          "date": "2026-06-11",
+          "summary": "毛毛雨",
+          "icon": "🌦️",
+          "weather_code": 53,
+          "temperature_min": 4.5,
+          "temperature_max": 14.1,
+          "precipitation_sum": 1.2,
+          "precipitation_probability_max": 84,
+          "wind_speed_max": 16.2,
+          "wind_gusts_max": 32.0,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.0167&longitude=-16.9667&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
+          "target_date": "2026-06-09",
+          "fallback_date": "2026-06-11",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-09 暂无预报，当前显示 2026-06-11 的天气。"
         },
         {
           "name": "Fjallsárlón 小冰湖",
@@ -381,21 +381,17 @@
           "name": "Stuðlagil 玄武岩峡谷",
           "lat": 65.1637,
           "lon": -15.3075,
-          "date": "2026-06-11",
+          "date": "2026-06-10",
           "summary": "毛毛雨",
           "icon": "🌦️",
           "weather_code": 53,
-          "temperature_min": 1.9,
-          "temperature_max": 14.3,
-          "precipitation_sum": 2.1,
+          "temperature_min": -0.1,
+          "temperature_max": 9.0,
+          "precipitation_sum": 3.0,
           "precipitation_probability_max": 100,
-          "wind_speed_max": 18.4,
-          "wind_gusts_max": 30.2,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.1637&longitude=-15.3075&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
-          "target_date": "2026-06-10",
-          "fallback_date": "2026-06-11",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-06-10 暂无预报，当前显示 2026-06-11 的天气。"
+          "wind_speed_max": 22.3,
+          "wind_gusts_max": 34.9,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.1637&longitude=-15.3075&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-10&end_date=2026-06-10"
         },
         {
           "name": "Neskaupstaður 小镇",
@@ -532,7 +528,11 @@
           "precipitation_probability_max": 100,
           "wind_speed_max": 20.9,
           "wind_gusts_max": 33.1,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.6826&longitude=-18.0907&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11"
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.6826&longitude=-18.0907&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
+          "target_date": "2026-06-11",
+          "fallback_date": "2026-06-11",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-11 暂无预报，当前显示 2026-06-11 的天气。"
         }
       ]
     },
@@ -620,21 +620,17 @@
           "name": "Stykkishólmur 白日梦想家小镇",
           "lat": 65.075,
           "lon": -22.729,
-          "date": "2026-06-11",
+          "date": "2026-06-13",
           "summary": "多云",
           "icon": "☁️",
           "weather_code": 3,
-          "temperature_min": 6.3,
-          "temperature_max": 14.9,
+          "temperature_min": 6.9,
+          "temperature_max": 14.7,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 18,
-          "wind_speed_max": 36.4,
-          "wind_gusts_max": 54.4,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.075&longitude=-22.729&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
-          "target_date": "2026-06-13",
-          "fallback_date": "2026-06-11",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-06-13 暂无预报，当前显示 2026-06-11 的天气。"
+          "precipitation_probability_max": 2,
+          "wind_speed_max": 25.6,
+          "wind_gusts_max": 36.4,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.075&longitude=-22.729&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13"
         },
         {
           "name": "Kirkjufell 草帽山",
@@ -811,17 +807,21 @@
           "name": "Landmannalaugar 彩虹山",
           "lat": 63.9928,
           "lon": -19.0607,
-          "date": "2026-06-16",
-          "summary": "多云",
-          "icon": "☁️",
-          "weather_code": 3,
-          "temperature_min": 0.9,
-          "temperature_max": 5.3,
-          "precipitation_sum": 0.0,
-          "precipitation_probability_max": 33,
-          "wind_speed_max": 30.3,
-          "wind_gusts_max": 43.9,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.9928&longitude=-19.0607&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-16&end_date=2026-06-16"
+          "date": "2026-06-11",
+          "summary": "小毛毛雨",
+          "icon": "🌦️",
+          "weather_code": 51,
+          "temperature_min": 0.5,
+          "temperature_max": 9.8,
+          "precipitation_sum": 0.1,
+          "precipitation_probability_max": 37,
+          "wind_speed_max": 27.0,
+          "wind_gusts_max": 41.4,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.9928&longitude=-19.0607&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
+          "target_date": "2026-06-16",
+          "fallback_date": "2026-06-11",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-16 暂无预报，当前显示 2026-06-11 的天气。"
         }
       ]
     },
@@ -871,11 +871,7 @@
           "precipitation_probability_max": 27,
           "wind_speed_max": 26.3,
           "wind_gusts_max": 32.8,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.799&longitude=-18.945&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11",
-          "target_date": "2026-06-11",
-          "fallback_date": "2026-06-11",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-06-11 暂无预报，当前显示 2026-06-11 的天气。"
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.799&longitude=-18.945&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11"
         }
       ]
     },
@@ -1726,27 +1722,27 @@
             {
               "road": "347",
               "label": "Ásgarður - Hveradalir",
-              "status": "Closed",
-              "open": false,
-              "icon": "⛔",
-              "detail": "Impassable",
+              "status": "Mountain vehicles only",
+              "open": true,
+              "icon": "⚠️",
+              "detail": "Mountain vehicles",
               "matched_count": 1,
               "matched_sections": [
                 {
                   "id": "1334730036",
                   "name": "Ásgarður - Hveradalir",
                   "short_name": "Ásgarður - Hveradalir",
-                  "condition": "OFAERT_VEDUR",
-                  "condition_en": "Impassable",
-                  "registered_at": "2026-06-11T02:55:01Z"
+                  "condition": "FAERT_FJALLABILUM",
+                  "condition_en": "Mountain vehicles",
+                  "registered_at": "2026-06-11T14:56:59Z"
                 }
               ],
               "official_url": "https://umferdin.is/en"
             }
           ],
-          "overall_status": "Closed / Partly closed",
-          "overall_open": false,
-          "overall_icon": "⛔"
+          "overall_status": "Open",
+          "overall_open": true,
+          "overall_icon": "✅"
         }
       ]
     },
