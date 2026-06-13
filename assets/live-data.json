@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-13T22:07:05+00:00",
+  "updated_at": "2026-06-13T23:33:28+00:00",
   "weather_source": "Open-Meteo Forecast API",
   "road_source": "Vegagerðin / umferdin.is faerd2017_1",
   "daily_weather": [
@@ -397,17 +397,21 @@
           "name": "Neskaupstaður 小镇",
           "lat": 65.1487,
           "lon": -13.6831,
-          "date": "2026-06-10",
-          "summary": "较强毛毛雨",
-          "icon": "🌧️",
-          "weather_code": 55,
-          "temperature_min": 5.0,
-          "temperature_max": 9.1,
-          "precipitation_sum": 4.0,
-          "precipitation_probability_max": 100,
-          "wind_speed_max": 39.6,
-          "wind_gusts_max": 66.6,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.1487&longitude=-13.6831&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-10&end_date=2026-06-10"
+          "date": "2026-06-13",
+          "summary": "雾",
+          "icon": "🌫️",
+          "weather_code": 45,
+          "temperature_min": 4.3,
+          "temperature_max": 9.4,
+          "precipitation_sum": 0.0,
+          "precipitation_probability_max": 4,
+          "wind_speed_max": 27.0,
+          "wind_gusts_max": 46.4,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.1487&longitude=-13.6831&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13",
+          "target_date": "2026-06-10",
+          "fallback_date": "2026-06-13",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-10 暂无预报，当前显示 2026-06-13 的天气。"
         }
       ]
     },
@@ -438,21 +442,17 @@
           "name": "Krafla 火山口 / Víti",
           "lat": 65.7171,
           "lon": -16.7548,
-          "date": "2026-06-13",
-          "summary": "小毛毛雨",
-          "icon": "🌦️",
-          "weather_code": 51,
-          "temperature_min": 2.6,
-          "temperature_max": 13.6,
-          "precipitation_sum": 0.1,
-          "precipitation_probability_max": 0,
-          "wind_speed_max": 23.0,
-          "wind_gusts_max": 33.1,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.7171&longitude=-16.7548&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13",
-          "target_date": "2026-06-11",
-          "fallback_date": "2026-06-13",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-06-11 暂无预报，当前显示 2026-06-13 的天气。"
+          "date": "2026-06-11",
+          "summary": "小雪",
+          "icon": "🌨️",
+          "weather_code": 71,
+          "temperature_min": 0.2,
+          "temperature_max": 10.1,
+          "precipitation_sum": 0.8,
+          "precipitation_probability_max": 100,
+          "wind_speed_max": 24.5,
+          "wind_gusts_max": 33.8,
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.7171&longitude=-16.7548&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-11&end_date=2026-06-11"
         },
         {
           "name": "Hverir 地热区",
@@ -627,7 +627,7 @@
           "temperature_min": 6.9,
           "temperature_max": 15.5,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 0,
+          "precipitation_probability_max": 2,
           "wind_speed_max": 22.7,
           "wind_gusts_max": 32.0,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=65.075&longitude=-22.729&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13"
@@ -688,7 +688,7 @@
           "temperature_min": 6.8,
           "temperature_max": 17.0,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 4,
+          "precipitation_probability_max": 2,
           "wind_speed_max": 12.6,
           "wind_gusts_max": 22.7,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.769&longitude=-23.63&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-14&end_date=2026-06-14"
@@ -704,7 +704,7 @@
           "temperature_min": 8.0,
           "temperature_max": 17.5,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 4,
+          "precipitation_probability_max": 2,
           "wind_speed_max": 22.7,
           "wind_gusts_max": 33.5,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.7537&longitude=-23.8951&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-14&end_date=2026-06-14"
@@ -720,7 +720,7 @@
           "temperature_min": 7.6,
           "temperature_max": 16.8,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 4,
+          "precipitation_probability_max": 2,
           "wind_speed_max": 12.6,
           "wind_gusts_max": 22.0,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.7367&longitude=-23.7739&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-14&end_date=2026-06-14"
@@ -736,7 +736,7 @@
           "temperature_min": 6.8,
           "temperature_max": 17.0,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 4,
+          "precipitation_probability_max": 2,
           "wind_speed_max": 12.6,
           "wind_gusts_max": 22.7,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.7664&longitude=-23.6271&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-14&end_date=2026-06-14"
@@ -752,7 +752,7 @@
           "temperature_min": 7.0,
           "temperature_max": 17.4,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 0,
+          "precipitation_probability_max": 1,
           "wind_speed_max": 15.5,
           "wind_gusts_max": 25.9,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.8216&longitude=-23.3843&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-14&end_date=2026-06-14"
@@ -768,7 +768,7 @@
           "temperature_min": 6.4,
           "temperature_max": 17.4,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 2,
+          "precipitation_probability_max": 0,
           "wind_speed_max": 21.2,
           "wind_gusts_max": 33.8,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.8038&longitude=-23.08&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-14&end_date=2026-06-14"
@@ -793,7 +793,7 @@
           "temperature_min": 2.0,
           "temperature_max": 4.1,
           "precipitation_sum": 1.4,
-          "precipitation_probability_max": 61,
+          "precipitation_probability_max": 47,
           "wind_speed_max": 22.7,
           "wind_gusts_max": 33.8,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.6442&longitude=-19.2762&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-15&end_date=2026-06-15"
@@ -843,7 +843,7 @@
           "temperature_min": 1.4,
           "temperature_max": 5.6,
           "precipitation_sum": 1.6,
-          "precipitation_probability_max": 14,
+          "precipitation_probability_max": 31,
           "wind_speed_max": 10.8,
           "wind_gusts_max": 40.3,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.6794&longitude=-19.4825&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-17&end_date=2026-06-17"
@@ -896,7 +896,11 @@
           "precipitation_probability_max": 0,
           "wind_speed_max": 29.5,
           "wind_gusts_max": 43.9,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.438&longitude=-20.267&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13"
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.438&longitude=-20.267&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13",
+          "target_date": "2026-06-13",
+          "fallback_date": "2026-06-13",
+          "is_fallback": true,
+          "fallback_note": "目标日期 2026-06-13 暂无预报，当前显示 2026-06-13 的天气。"
         },
         {
           "name": "Landeyjahöfn 港口",
@@ -937,11 +941,7 @@
           "precipitation_probability_max": 6,
           "wind_speed_max": 25.6,
           "wind_gusts_max": 32.4,
-          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.527&longitude=-18.891&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13",
-          "target_date": "2026-06-13",
-          "fallback_date": "2026-06-13",
-          "is_fallback": true,
-          "fallback_note": "目标日期 2026-06-13 暂无预报，当前显示 2026-06-13 的天气。"
+          "source_url": "https://api.open-meteo.com/v1/forecast?latitude=63.527&longitude=-18.891&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13"
         },
         {
           "name": "Remundargil canyons 徒步",
@@ -995,7 +995,7 @@
           "temperature_min": 0.4,
           "temperature_max": 10.2,
           "precipitation_sum": 0.0,
-          "precipitation_probability_max": 51,
+          "precipitation_probability_max": 45,
           "wind_speed_max": 26.6,
           "wind_gusts_max": 34.9,
           "source_url": "https://api.open-meteo.com/v1/forecast?latitude=64.07&longitude=-18.233&daily=weather_code%2Ctemperature_2m_max%2Ctemperature_2m_min%2Cprecipitation_sum%2Cprecipitation_probability_max%2Cwind_speed_10m_max%2Cwind_gusts_10m_max&timezone=Atlantic%2FReykjavik&start_date=2026-06-13&end_date=2026-06-13"
